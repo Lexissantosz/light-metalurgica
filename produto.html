@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta
     name="description"
-    content="Catálogo de equipamentos da Light Metalúrgica. Encontre máquinas de academia por categoria e solicite um orçamento."
+    content="Detalhes do produto Light Metalúrgica. Conheça o equipamento e solicite um orçamento."
   />
-  <title>Produtos | Light Metalúrgica</title>
+  <title>Produto | Light Metalúrgica</title>
 
   <link rel="stylesheet" href="./css/style.css" />
-  <link rel="stylesheet" href="./css/produtos.css" />
+  <link rel="stylesheet" href="./css/produto.css" />
 </head>
 <body>
   <header class="header" id="header">
@@ -38,62 +38,27 @@
   </header>
 
   <main>
-    <section class="catalog-hero">
-      <div class="container">
-        <span class="section-badge">Catálogo profissional</span>
-        <h1>Catálogo de Equipamentos</h1>
-        <p>
-          Conheça a linha de máquinas da Light Metalúrgica e encontre os equipamentos ideais
-          para academias, estúdios e espaços fitness.
-        </p>
-      </div>
-    </section>
-
-    <section class="catalog-section">
-      <div class="container">
-        <div class="catalog-toolbar">
-          <div class="search-box">
-            <label for="searchInput" class="sr-only">Buscar produto</label>
-            <input
-              type="text"
-              id="searchInput"
-              placeholder="Buscar por nome do equipamento..."
-            />
-          </div>
-
-          <div class="category-filters" id="categoryFilters">
-            <!-- filtros gerados no JS -->
-          </div>
-        </div>
-
-        <div class="catalog-info">
-          <p id="resultsInfo">Carregando produtos...</p>
-        </div>
-
-        <div class="products-grid" id="productsGrid">
-          <!-- cards gerados no JS -->
-        </div>
-
-        <div class="empty-state hidden" id="emptyState">
-          <h3>Nenhum produto encontrado</h3>
-          <p>Tente buscar outro nome ou selecionar uma categoria diferente.</p>
+    <section class="product-detail-section">
+      <div class="container" id="productDetailContainer">
+        <div class="product-not-found">
+          <span class="section-badge">Produto</span>
+          <h1>Carregando produto...</h1>
+          <p>Aguarde enquanto buscamos as informações do equipamento.</p>
         </div>
       </div>
     </section>
 
-    <section class="cta-section">
-      <div class="container cta-box">
-        <div>
-          <span class="section-badge">Atendimento comercial</span>
-          <h2>Encontrou o equipamento ideal?</h2>
-          <p>
-            Entre em contato com a Light Metalúrgica para solicitar orçamento ou verificar disponibilidade.
-          </p>
+    <section class="related-section">
+      <div class="container">
+        <div class="section-heading">
+          <span class="section-badge">Catálogo</span>
+          <h2>Continue explorando</h2>
+          <p>Veja outros equipamentos disponíveis no catálogo da Light Metalúrgica.</p>
         </div>
 
-        <div class="cta-actions">
-          <a href="contato.html" class="btn btn-gold">Solicitar orçamento</a>
-          <a href="sobre.html" class="btn btn-outline">Conhecer a empresa</a>
+        <div class="related-actions">
+          <a href="produtos.html" class="btn btn-gold">Voltar ao catálogo</a>
+          <a href="contato.html" class="btn btn-outline">Solicitar orçamento</a>
         </div>
       </div>
     </section>
@@ -138,6 +103,6 @@
 
   <script src="./js/script.js"></script>
   <script src="./js/data-produtos.js"></script>
-  <script src="./js/produtos.js"></script>
+  <script src="./js/produto.js"></script>
 </body>
 </html>
