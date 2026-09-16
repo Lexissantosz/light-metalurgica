@@ -1,226 +1,82 @@
 const produtos = [
   {
-    id: 1,
-    nome: "Abdutora em Pé",
-    descricao: "Equipamento para treino de glúteos e quadril com estrutura firme e execução estável.",
-    categoria: "Pernas",
-    imagem: "./arquivos/imagens/produtos/abdutora-em-pe.png"
-  },
-  {
-    id: 2,
-    nome: "Agachamento Belt Squat Sumô",
-    descricao: "Máquina para treinos de pernas e glúteos com excelente estabilidade e presença profissional.",
-    categoria: "Pernas",
-    imagem: "./arquivos/imagens/produtos/agachamento-belt-squat-sumo.png"
-  },
-  {
-    id: 3,
-    nome: "Agachamento Pêndulo",
-    descricao: "Equipamento robusto para treinos intensos de pernas com biomecânica eficiente.",
-    categoria: "Pernas",
-    imagem: "./arquivos/imagens/produtos/agachamento-pendulo.png"
-  },
-  {
-    id: 4,
-    nome: "Agachamento VSquat",
-    descricao: "Máquina profissional para agachamento com conforto, estabilidade e segurança.",
-    categoria: "Pernas",
-    imagem: "./arquivos/imagens/produtos/agachamento-vsquat.png"
-  },
-  {
-    id: 5,
-    nome: "Banco 90°",
-    descricao: "Banco versátil para apoio em exercícios variados com estrutura resistente.",
-    categoria: "Bancos e Suportes",
-    imagem: "./arquivos/imagens/produtos/banco-90.png"
-  },
-  {
-    id: 6,
-    nome: "Banco Lombar",
-    descricao: "Equipamento para fortalecimento da lombar e exercícios de core com apoio firme.",
-    categoria: "Bancos e Suportes",
-    imagem: "./arquivos/imagens/produtos/banco-lombar.png"
-  },
-  {
     id: 7,
     nome: "Banco Supino Reto",
-    descricao: "Banco robusto para exercícios de supino e treinos com pesos livres.",
+    descricao:
+      "Banco para exercícios de supino e treinos com pesos livres, com estrutura voltada ao uso em academias e espaços fitness.",
     categoria: "Bancos e Suportes",
-    imagem: "./arquivos/imagens/produtos/banco-supino-reto.png"
+    imagem: "./arquivos/imagens/produtos/Banco Supino Reto — ID 7.png"
   },
   {
     id: 8,
     nome: "Cadeira Extensora",
-    descricao: "Máquina para treino de quadríceps com excelente estabilidade e acabamento profissional.",
+    descricao:
+      "Equipamento destinado ao treino de quadríceps, com execução guiada e configuração adequada para ambientes profissionais.",
     categoria: "Pernas",
-    imagem: "./arquivos/imagens/produtos/cadeira-extensora.png"
-  },
-  {
-    id: 9,
-    nome: "Cadeira Extensora Unilateral",
-    descricao: "Equipamento para treino unilateral de quadríceps com maior controle de execução.",
-    categoria: "Pernas",
-    imagem: "./arquivos/imagens/produtos/cadeira-extensora-unilateral.png"
-  },
-  {
-    id: 10,
-    nome: "Cadeira Flexora",
-    descricao: "Máquina desenvolvida para exercícios de posteriores de coxa com conforto e firmeza.",
-    categoria: "Pernas",
-    imagem: "./arquivos/imagens/produtos/cadeira-flexora.png"
-  },
-  {
-    id: 11,
-    nome: "Cross Over Angular",
-    descricao: "Equipamento versátil para treinos com cabos, ideal para academias e estúdios.",
-    categoria: "Funcional",
-    imagem: "./arquivos/imagens/produtos/cross-over-angular.png"
+    imagem: "./arquivos/imagens/produtos/Cadeira Extensora — ID 8.png"
   },
   {
     id: 12,
     nome: "Cross Over Tradicional",
-    descricao: "Máquina multifuncional para exercícios diversos com excelente presença visual.",
+    descricao:
+      "Equipamento de cabos versátil para diferentes exercícios de membros superiores e treino funcional.",
     categoria: "Funcional",
-    imagem: "./arquivos/imagens/produtos/cross-over-trad.png"
+    imagem: "./arquivos/imagens/produtos/Cross Over Tradicional — ID 12.png"
   },
   {
     id: 13,
     nome: "Elevação Pélvica 2D",
-    descricao: "Equipamento voltado para glúteos e posteriores com estrutura reforçada.",
+    descricao:
+      "Equipamento desenvolvido para exercícios de elevação pélvica, com foco no treinamento de glúteos e membros inferiores.",
     categoria: "Pernas",
-    imagem: "./arquivos/imagens/produtos/elevacao-pelvica-2d.png"
-  },
-  {
-    id: 14,
-    nome: "Flexora em Pé",
-    descricao: "Máquina para treino unilateral de posteriores com execução confortável.",
-    categoria: "Pernas",
-    imagem: "./arquivos/imagens/produtos/flexora-em-pe.png"
-  },
-  {
-    id: 15,
-    nome: "Graviton",
-    descricao: "Equipamento funcional para barra e paralelas assistidas com estrutura profissional.",
-    categoria: "Funcional",
-    imagem: "./arquivos/imagens/produtos/graviton.png"
+    imagem: "./arquivos/imagens/produtos/Elevação Pélvica 2D — ID 13.png"
   },
   {
     id: 16,
     nome: "Hack Machine",
-    descricao: "Máquina robusta para treinos intensos de pernas com estabilidade e segurança.",
+    descricao:
+      "Máquina guiada destinada ao treinamento de membros inferiores, indicada para academias e espaços de musculação.",
     categoria: "Pernas",
-    imagem: "./arquivos/imagens/produtos/hack-machine.png"
+    imagem: "./arquivos/imagens/produtos/Hack Machine — ID 16.png"
   },
   {
     id: 17,
     nome: "Leg Press 45",
-    descricao: "Equipamento para treino de pernas com estrutura forte e excelente presença visual.",
+    descricao:
+      "Equipamento de musculação para treinamento de membros inferiores com movimento guiado em plataforma inclinada.",
     categoria: "Pernas",
-    imagem: "./arquivos/imagens/produtos/leg-press-45.png"
+    imagem: "./arquivos/imagens/produtos/Leg Press 45 — ID 17.png"
   },
   {
     id: 18,
     nome: "Máquina Bíceps Rosca Scott",
-    descricao: "Equipamento específico para treino de bíceps com apoio estável e execução segura.",
+    descricao:
+      "Equipamento específico para exercícios de bíceps com apoio para os braços e movimento direcionado.",
     categoria: "Braços",
-    imagem: "./arquivos/imagens/produtos/maquina-biceps-rosca-scott.png"
-  },
-  {
-    id: 19,
-    nome: "Máquina de Antebraço",
-    descricao: "Máquina voltada para fortalecimento de antebraços com uso confortável.",
-    categoria: "Braços",
-    imagem: "./arquivos/imagens/produtos/maquina-de-antebraco.png"
-  },
-  {
-    id: 20,
-    nome: "Máquina de Tríceps Francês",
-    descricao: "Equipamento para treino de tríceps com estrutura firme e acabamento profissional.",
-    categoria: "Braços",
-    imagem: "./arquivos/imagens/produtos/maquina-de-triceps-frances.png"
-  },
-  {
-    id: 21,
-    nome: "Mesa Flexora",
-    descricao: "Máquina para treino de posteriores de coxa com estabilidade e ergonomia.",
-    categoria: "Pernas",
-    imagem: "./arquivos/imagens/produtos/mesa-flexora.png"
-  },
-  {
-    id: 22,
-    nome: "Panturrilha Sentada Burrinho",
-    descricao: "Equipamento para treino de panturrilhas com estrutura reforçada e execução estável.",
-    categoria: "Pernas",
-    imagem: "./arquivos/imagens/produtos/panturrilha-sentada-burrinho.png"
+    imagem: "./arquivos/imagens/produtos/Máquina Bíceps Rosca Scott — ID 18.png"
   },
   {
     id: 23,
     nome: "Peck Deck",
-    descricao: "Máquina para exercícios de peitoral com movimento controlado e ótimo acabamento.",
+    descricao:
+      "Máquina destinada ao treinamento de peitoral com movimento guiado e apoio adequado para execução do exercício.",
     categoria: "Peito",
-    imagem: "./arquivos/imagens/produtos/peck-deck.png"
+    imagem: "./arquivos/imagens/produtos/Peck Deck — ID 23.png"
   },
   {
     id: 24,
     nome: "Puxada Alta Articulada",
-    descricao: "Equipamento para treino de dorsais com movimento articulado e boa biomecânica.",
+    descricao:
+      "Equipamento articulado destinado ao treinamento da musculatura das costas por meio de movimentos de puxada.",
     categoria: "Costas",
-    imagem: "./arquivos/imagens/produtos/puxada-alta-articulada.png"
-  },
-  {
-    id: 25,
-    nome: "Puxada Alta Articulada Modelo Robótico",
-    descricao: "Versão avançada da puxada alta com design moderno e estrutura profissional.",
-    categoria: "Costas",
-    imagem: "./arquivos/imagens/produtos/puxada-alta-articulada-modelo-robotico.png"
-  },
-  {
-    id: 26,
-    nome: "Puxada Alta com Remada Baixa",
-    descricao: "Equipamento combinado para treinos completos de costas com ótima versatilidade.",
-    categoria: "Costas",
-    imagem: "./arquivos/imagens/produtos/puxada-alta-com-remada-baixa.png"
-  },
-  {
-    id: 27,
-    nome: "Remada Curvada c/ Guias Lineares",
-    descricao: "Máquina para treino intenso de dorsais com movimento guiado e estável.",
-    categoria: "Costas",
-    imagem: "./arquivos/imagens/produtos/remada-curvada-c-guias-lineares.png"
-  },
-  {
-    id: 28,
-    nome: "Remada Senta Articulada",
-    descricao: "Equipamento para fortalecimento das costas com biomecânica eficiente.",
-    categoria: "Costas",
-    imagem: "./arquivos/imagens/produtos/remada-senta-articulada.png"
+    imagem: "./arquivos/imagens/produtos/Puxada Alta Articulada — ID 24.png"
   },
   {
     id: 29,
     nome: "Smith Machine",
-    descricao: "Estrutura guiada para exercícios diversos com mais estabilidade e segurança.",
+    descricao:
+      "Estrutura com barra guiada para realização de diferentes exercícios de musculação em ambientes profissionais.",
     categoria: "Funcional",
-    imagem: "./arquivos/imagens/produtos/smith-machine.png"
-  },
-  {
-    id: 30,
-    nome: "Supino Declinado",
-    descricao: "Máquina para treino de peitoral inferior com estrutura firme e visual profissional.",
-    categoria: "Peito",
-    imagem: "./arquivos/imagens/produtos/supino-declinado.png"
-  },
-  {
-    id: 31,
-    nome: "Supino Inclinado",
-    descricao: "Equipamento para treino de peitoral superior com excelente estabilidade.",
-    categoria: "Peito",
-    imagem: "./arquivos/imagens/produtos/supino-inclinado.png"
-  },
-  {
-    id: 32,
-    nome: "Suporte Búlgaro",
-    descricao: "Estrutura de apoio para exercícios unilaterais e treinos funcionais.",
-    categoria: "Bancos e Suportes",
-    imagem: "./arquivos/imagens/produtos/suporte-bulgaro.png"
+    imagem: "./arquivos/imagens/produtos/Smith Machine — ID 29.png"
   }
 ];
