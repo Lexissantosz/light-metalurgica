@@ -4,10 +4,11 @@ const searchInput = document.getElementById("searchInput");
 const resultsInfo = document.getElementById("resultsInfo");
 const emptyState = document.getElementById("emptyState");
 
+let produtos = [];
 let categoriaAtual = "Todos";
 let termoBusca = "";
 
-function normalizarTexto(texto) {
+function normalizarTexto(texto = "") {
   return texto
     .toLowerCase()
     .normalize("NFD")
@@ -16,6 +17,7 @@ function normalizarTexto(texto) {
 
 function obterCategorias() {
   const categorias = produtos.map((produto) => produto.categoria);
+
   return ["Todos", ...new Set(categorias)];
 }
 
@@ -36,11 +38,13 @@ function criarFiltros() {
     )
     .join("");
 
-  const botoesFiltro = categoryFilters.querySelectorAll(".filter-btn");
+  const botoesFiltro =
+    categoryFilters.querySelectorAll(".filter-btn");
 
   botoesFiltro.forEach((botao) => {
     botao.addEventListener("click", () => {
       categoriaAtual = botao.dataset.category;
+
       criarFiltros();
       renderizarProdutos();
     });
@@ -50,18 +54,24 @@ function criarFiltros() {
 function filtrarProdutos() {
   return produtos.filter((produto) => {
     const correspondeCategoria =
-      categoriaAtual === "Todos" || produto.categoria === categoriaAtual;
+      categoriaAtual === "Todos" ||
+      produto.categoria === categoriaAtual;
 
     const correspondeBusca =
       termoBusca.trim() === "" ||
-      normalizarTexto(produto.nome).includes(normalizarTexto(termoBusca));
+      normalizarTexto(produto.nome).includes(
+        normalizarTexto(termoBusca)
+      );
 
     return correspondeCategoria && correspondeBusca;
   });
 }
 
 function criarImagemProduto(produto) {
-  if (produto.imagem && produto.imagem.trim() !== "") {
+  if (
+    produto.imagem &&
+    produto.imagem.trim() !== ""
+  ) {
     return `
       <img
         src="${produto.imagem}"
@@ -72,71 +82,158 @@ function criarImagemProduto(produto) {
     `;
   }
 
-  return `<div class="catalog-card-placeholder">Imagem indisponível</div>`;
+  return `
+    <div class="catalog-card-placeholder">
+      Imagem indisponível
+    </div>
+  `;
 }
 
 function criarCardProduto(produto) {
   return `
     <article class="catalog-card">
+
       <div class="catalog-card-image">
         ${criarImagemProduto(produto)}
       </div>
 
       <div class="catalog-card-content">
-        <span class="catalog-card-category">${produto.categoria}</span>
-        <h3 class="catalog-card-title">${produto.nome}</h3>
-        <p class="catalog-card-description">${produto.descricao}</p>
+
+        <span class="catalog-card-category">
+          ${produto.categoria}
+        </span>
+
+        <h3 class="catalog-card-title">
+          ${produto.nome}
+        </h3>
+
+        <p class="catalog-card-description">
+          ${produto.descricaoCurta}
+        </p>
 
         <div class="catalog-card-actions">
-          <a href="produto.html?id=${produto.id}" class="btn btn-outline">Ver detalhes</a>
-          <a href="contato.html" class="btn btn-gold">Solicitar orçamento</a>
+
+          <a
+            href="produto.html?id=${produto.id}"
+            class="btn btn-outline"
+          >
+            Ver detalhes
+          </a>
+
+          <a
+            href="contato.html?produto=${encodeURIComponent(
+              produto.nome
+            )}"
+            class="btn btn-gold"
+          >
+            Solicitar orçamento
+          </a>
+
         </div>
+
       </div>
+
     </article>
   `;
 }
 
 function atualizarInfoResultados(total) {
-  if (categoriaAtual === "Todos" && termoBusca.trim() === "") {
-    resultsInfo.textContent = `${total} produto(s) exibido(s) no catálogo.`;
+  if (
+    categoriaAtual === "Todos" &&
+    termoBusca.trim() === ""
+  ) {
+    resultsInfo.textContent =
+      `${total} produto(s) exibido(s) no catálogo.`;
+
     return;
   }
 
-  resultsInfo.textContent = `${total} produto(s) encontrado(s).`;
+  resultsInfo.textContent =
+    `${total} produto(s) encontrado(s).`;
 }
 
 function renderizarProdutos() {
   if (!productsGrid) return;
 
-  const produtosFiltrados = filtrarProdutos();
+  const produtosFiltrados =
+    filtrarProdutos();
 
-  atualizarInfoResultados(produtosFiltrados.length);
+  atualizarInfoResultados(
+    produtosFiltrados.length
+  );
 
   if (produtosFiltrados.length === 0) {
     productsGrid.innerHTML = "";
     emptyState.classList.remove("hidden");
+
     return;
   }
 
   emptyState.classList.add("hidden");
 
-  productsGrid.innerHTML = produtosFiltrados
-    .map((produto) => criarCardProduto(produto))
-    .join("");
+  productsGrid.innerHTML =
+    produtosFiltrados
+      .map((produto) =>
+        criarCardProduto(produto)
+      )
+      .join("");
+}
+
+function renderizarErroCatalogo() {
+  if (productsGrid) {
+    productsGrid.innerHTML = "";
+  }
+
+  if (resultsInfo) {
+    resultsInfo.textContent =
+      "Não foi possível carregar o catálogo.";
+  }
+
+  if (emptyState) {
+    emptyState.classList.remove("hidden");
+
+    emptyState.innerHTML = `
+      <span>Erro de carregamento</span>
+
+      <h3>
+        Não foi possível carregar os equipamentos.
+      </h3>
+
+      <p>
+        Tente atualizar a página novamente.
+      </p>
+    `;
+  }
+}
+
+async function iniciarCatalogo() {
+  try {
+    produtos =
+      await window.catalogoData
+        .carregarProdutosPublicos();
+
+    criarFiltros();
+    renderizarProdutos();
+  } catch (erro) {
+    console.error(
+      "Erro ao carregar catálogo:",
+      erro
+    );
+
+    renderizarErroCatalogo();
+  }
 }
 
 if (searchInput) {
-  searchInput.addEventListener("input", (event) => {
-    termoBusca = event.target.value;
-    renderizarProdutos();
-  });
+  searchInput.addEventListener(
+    "input",
+    (event) => {
+      termoBusca =
+        event.target.value;
+
+      renderizarProdutos();
+    }
+  );
 }
 
-if (typeof produtos !== "undefined" && Array.isArray(produtos)) {
-  criarFiltros();
-  renderizarProdutos();
-} else {
-  if (resultsInfo) {
-    resultsInfo.textContent = "Erro ao carregar os produtos.";
-  }
-}
+iniciarCatalogo();
