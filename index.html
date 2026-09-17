@@ -135,7 +135,7 @@
                 <path d="M8 3h8v4H8z" />
               </svg>
 
-              <span>10 equipamentos no catálogo</span>
+              <span id="homeCatalogCount">Carregando catálogo...</span>
             </div>
 
           </div>
@@ -156,21 +156,25 @@
 
           </div>
 
-          <div class="hero-equipment">
-            <img
-              src="./arquivos/imagens/produtos/Leg Press 45 — ID 17.png"
-              alt="Leg Press 45 da Light Metalúrgica"
-            />
-          </div>
+          <div
+            class="hero-equipment"
+            id="homeHeroImage"
+          ></div>
 
           <div class="hero-equipment-info">
 
             <div>
               <span>Equipamento em destaque</span>
-              <h2>Leg Press 45</h2>
+              <h2 id="homeHeroName">
+                Carregando equipamento...
+              </h2>
             </div>
 
-            <a href="produto.html?id=17" class="text-link">
+            <a
+              href="produtos.html"
+              class="text-link"
+              id="homeHeroLink"
+            >
               Ver detalhes
             </a>
 
@@ -429,7 +433,7 @@
         </div>
 
 
-        <div class="featured-grid-pro">
+        <div class="featured-grid-pro" id="homeFeaturedProducts">
 
           <!-- LEG PRESS -->
 
@@ -742,6 +746,8 @@
 
 
   <script src="./js/script.js"></script>
+  <script src="./js/catalogo-data.js"></script>
+  <script src="./js/home.js"></script>
 
 </body>
 </html>
