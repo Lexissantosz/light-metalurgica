@@ -6,8 +6,8 @@
   "whatsapp": null,
   "instagram": null,
   "email": null,
-  "localizacao": "Brasília - DF",
+  "localizacao": null,
   "arquivoPdf": "arquivos/catalogo-light-metalurgica.pdf",
-  "corPrimaria": "#FF6A00",
+  "corPrimaria": "#F26A21",
   "corFundo": "#0B0D10"
 }
