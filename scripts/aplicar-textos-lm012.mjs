@@ -38,10 +38,38 @@ for (const produto of catalogo.produtos || []) {
     alterados += 1;
   }
 
-  if (revisao.destaques) {
-    produto.destaques = revisao.destaques;
-  }
+  if (revisao.destaques) produto.destaques = revisao.destaques;
 }
 
 fs.writeFileSync(arquivo, `${JSON.stringify(catalogo, null, 2)}\n`, "utf8");
-console.log(`LM-012: ${alterados} descrições revisadas.`);
+
+const homePath = path.join(root, "index.html");
+let home = fs.readFileSync(homePath, "utf8");
+const revisoesHome = [
+  [
+    /Equipamentos de musculação para academias, estúdios e projetos\s+fitness que buscam resistência, acabamento profissional e presença\s+no ambiente\./m,
+    "Equipamentos de musculação para academias, estúdios e espaços fitness, organizados para facilitar a consulta e a solicitação de orçamento."
+  ],
+  [/Estrutura robusta/g, "Catálogo organizado"],
+  [/Equipamentos preparados para ambientes profissionais\./g, "Equipamentos apresentados por categoria para facilitar a consulta."],
+  [/Biomecânica/g, "Informações objetivas"],
+  [/Máquinas voltadas para movimentos eficientes\./g, "Dados disponíveis no catálogo e detalhes técnicos sob consulta."],
+  [/Acabamento profissional/g, "Consulta comercial"],
+  [/Visual pensado para integrar academias modernas\./g, "Modelos e imagens reunidos para apoiar a solicitação de orçamento."],
+  [
+    /A proposta une estrutura, funcionalidade e acabamento\s+profissional para oferecer soluções compatíveis com ambientes\s+que valorizam desempenho e apresentação\./m,
+    "O catálogo reúne os modelos disponíveis e organiza as informações para consulta, comparação e contato com a equipe comercial."
+  ]
+];
+
+let homeAlterada = false;
+for (const [padrao, texto] of revisoesHome) {
+  const nova = home.replace(padrao, texto);
+  if (nova !== home) homeAlterada = true;
+  home = nova;
+}
+
+if (homeAlterada) fs.writeFileSync(homePath, home, "utf8");
+
+console.log(`LM-012: ${alterados} descrições de produto revisadas.`);
+console.log(`LM-012: Home ${homeAlterada ? "revisada" : "já estava revisada"}.`);
