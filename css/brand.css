@@ -1,0 +1,200 @@
+/* =========================================
+   LIGHT METALÚRGICA
+   IDENTIDADE DE MARCA — LARANJA / GRAFITE
+========================================= */
+
+:root {
+  --brand: #f26a21;
+  --brand-light: #ff9855;
+  --brand-dark: #c94f13;
+  --brand-rgb: 242, 106, 33;
+
+  /* Compatibilidade com os estilos existentes durante a migração. */
+  --gold: var(--brand);
+  --gold-light: var(--brand-light);
+  --gold-dark: var(--brand-dark);
+  --border-gold: rgba(var(--brand-rgb), 0.32);
+
+  /* Compatibilidade com páginas legadas. */
+  --gray-light: var(--text-muted);
+  --white-soft: var(--text);
+  --shadow: var(--shadow-sm);
+}
+
+body {
+  background:
+    radial-gradient(
+      circle at 75% 0%,
+      rgba(var(--brand-rgb), 0.055),
+      transparent 28rem
+    ),
+    var(--bg);
+}
+
+body::selection {
+  background: var(--brand);
+  color: #0b0d10;
+}
+
+.btn-gold {
+  background: var(--brand);
+  color: #0b0d10;
+}
+
+.btn-gold:hover {
+  background: var(--brand-light);
+  box-shadow: 0 14px 34px rgba(var(--brand-rgb), 0.22);
+}
+
+.btn-outline:hover {
+  border-color: var(--brand);
+  color: var(--brand-light);
+  background: rgba(var(--brand-rgb), 0.055);
+}
+
+input:focus,
+textarea:focus,
+select:focus,
+.search-box input:focus,
+.form-row input:focus,
+.form-row textarea:focus {
+  border-color: var(--brand);
+  box-shadow: 0 0 0 3px rgba(var(--brand-rgb), 0.12);
+}
+
+/* HOME */
+.hero-pro {
+  background:
+    radial-gradient(
+      circle at 74% 24%,
+      rgba(var(--brand-rgb), 0.11),
+      transparent 30rem
+    ),
+    linear-gradient(
+      90deg,
+      #090a0c 0%,
+      #090a0c 42%,
+      #0c0e11 100%
+    );
+}
+
+.hero-pro-content h1 span {
+  background: linear-gradient(
+    110deg,
+    var(--brand-light),
+    var(--brand),
+    var(--brand-dark)
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.hero-pro-visual::before {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(9, 10, 12, 0.75),
+      transparent 18%
+    ),
+    radial-gradient(
+      circle at center,
+      rgba(var(--brand-rgb), 0.12),
+      transparent 52%
+    );
+}
+
+.hero-equipment::before {
+  background: rgba(var(--brand-rgb), 0.065);
+}
+
+.category-card-pro:hover {
+  background: linear-gradient(
+    145deg,
+    rgba(var(--brand-rgb), 0.10),
+    rgba(255, 255, 255, 0.012)
+  );
+}
+
+.final-cta {
+  background:
+    radial-gradient(
+      circle at 10% 50%,
+      rgba(var(--brand-rgb), 0.12),
+      transparent 28rem
+    ),
+    var(--surface);
+}
+
+/* CATÁLOGO */
+.catalog-hero {
+  background:
+    radial-gradient(
+      circle at 78% 15%,
+      rgba(var(--brand-rgb), 0.11),
+      transparent 26rem
+    ),
+    linear-gradient(180deg, #0b0d10, var(--bg));
+}
+
+.filter-btn.active {
+  border-color: rgba(var(--brand-rgb), 0.34);
+  background: rgba(var(--brand-rgb), 0.10);
+  color: var(--brand-light);
+}
+
+.catalog-card:hover,
+.related-product-card:hover {
+  border-color: rgba(var(--brand-rgb), 0.34);
+}
+
+/* PRODUTO */
+.product-detail-section {
+  background:
+    radial-gradient(
+      circle at 21% 25%,
+      rgba(var(--brand-rgb), 0.07),
+      transparent 27rem
+    );
+}
+
+.product-final-cta {
+  background:
+    radial-gradient(
+      circle at 12% 50%,
+      rgba(var(--brand-rgb), 0.12),
+      transparent 27rem
+    ),
+    var(--surface);
+}
+
+/* SOBRE E CONTATO */
+.about-hero,
+.contact-hero {
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(var(--brand-rgb), 0.14),
+      transparent 30%
+    ),
+    linear-gradient(180deg, #111214 0%, #0f0f10 100%);
+}
+
+.contact-card {
+  border-color: rgba(var(--brand-rgb), 0.14);
+}
+
+.form-row input,
+.form-row textarea {
+  border-color: rgba(var(--brand-rgb), 0.20);
+}
+
+/* ACESSIBILIDADE VISUAL */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--brand-light);
+  outline-offset: 3px;
+}
