@@ -1,0 +1,43 @@
+name: Validar SEO de publicação
+
+on:
+  pull_request:
+    paths:
+      - "data/produtos.json"
+      - "scripts/gerar_seo_publicacao.py"
+      - ".github/workflows/seo-publicacao.yml"
+  workflow_dispatch:
+
+jobs:
+  gerar-seo:
+    runs-on: ubuntu-latest
+    if: ${{ vars.CATALOGO_SITE_URL != '' }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Gerar robots e sitemap
+        env:
+          SITE_URL: ${{ vars.CATALOGO_SITE_URL }}
+        run: python scripts/gerar_seo_publicacao.py
+
+      - name: Validar arquivos
+        run: |
+          test -s robots.txt
+          test -s sitemap.xml
+          grep -q "Sitemap:" robots.txt
+          grep -q "produto.html?id=" sitemap.xml
+
+      - name: Publicar artifact para revisão
+        uses: actions/upload-artifact@v4
+        with:
+          name: seo-publicacao
+          path: |
+            robots.txt
+            sitemap.xml
