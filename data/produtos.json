@@ -2,5 +2,32 @@
   "versao": 1,
   "atualizadoEm": "2026-09-17",
   "moeda": "BRL",
-  "produtos": []
+  "produtos": [
+    {
+      "id": 1,
+      "codigo": "2004445420506",
+      "nome": "Abdominal Máquina Mod Import",
+      "slug": "abdominal-maquina-mod-import",
+      "categoria": "Abdômen",
+      "descricaoCurta": "Equipamento para treinamento abdominal em ambientes profissionais.",
+      "imagem": null,
+      "ativoNoSite": false,
+      "exibirPreco": false,
+      "precoPublico": null,
+      "destaques": [
+        {
+          "titulo": "Aplicação",
+          "texto": "Treinamento da região abdominal."
+        },
+        {
+          "titulo": "Uso",
+          "texto": "Indicado para academias e espaços de musculação."
+        },
+        {
+          "titulo": "Informações técnicas",
+          "texto": "Especificações adicionais sob consulta."
+        }
+      ]
+    }
+  ]
 }
