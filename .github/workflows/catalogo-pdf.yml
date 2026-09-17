@@ -14,6 +14,7 @@ on:
   push:
     branches:
       - main
+      - release/rc-1
     paths:
       - "data/produtos.json"
       - "config/catalogo.json"
@@ -70,8 +71,11 @@ jobs:
           if-no-files-found: error
           retention-days: 14
 
-      - name: Publicar PDF atualizado na main
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main' && github.actor != 'github-actions[bot]'
+      - name: Publicar PDF atualizado na branch atual
+        if: >-
+          github.event_name == 'push' &&
+          (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/release/rc-1') &&
+          github.actor != 'github-actions[bot]'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -80,5 +84,5 @@ jobs:
             echo "PDF sem alterações."
             exit 0
           fi
-          git commit -m "build(LM-017): atualiza catálogo PDF [skip ci]"
+          git commit -m "build(LM-017): atualiza catálogo PDF"
           git push
