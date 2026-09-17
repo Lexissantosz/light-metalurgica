@@ -1,0 +1,178 @@
+{
+  "versao": 1,
+  "atualizadoEm": "2026-09-17",
+  "moeda": "BRL",
+  "produtos": [
+    {
+      "id": 1,
+      "codigo": "2004445420506",
+      "codigoValidado": true,
+      "nome": "Abdominal Máquina Mod Import",
+      "slug": "abdominal-maquina-mod-import",
+      "categoria": "Abdômen",
+      "descricaoCurta": "Equipamento para treinamento abdominal em ambientes profissionais.",
+      "imagem": null,
+      "ativoNoSite": false,
+      "exibirPreco": false,
+      "precoPublico": null,
+      "destaques": [
+        {
+          "titulo": "Aplicação",
+          "texto": "Treinamento da região abdominal."
+        },
+        {
+          "titulo": "Uso",
+          "texto": "Indicado para academias e espaços de musculação."
+        },
+        {
+          "titulo": "Informações técnicas",
+          "texto": "Especificações adicionais sob consulta."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "codigo": null,
+      "codigoValidado": false,
+      "nome": "Banco Supino Reto",
+      "slug": "banco-supino-reto",
+      "categoria": "Bancos e Suportes",
+      "descricaoCurta": "Banco para exercícios de supino e treinos com pesos livres, com estrutura voltada ao uso em academias e espaços fitness.",
+      "imagem": "./arquivos/imagens/produtos/Banco Supino Reto — ID 7.png",
+      "ativoNoSite": true,
+      "exibirPreco": false,
+      "precoPublico": null,
+      "destaques": []
+    },
+    {
+      "id": 8,
+      "codigo": null,
+      "codigoValidado": false,
+      "nome": "Cadeira Extensora",
+      "slug": "cadeira-extensora",
+      "categoria": "Pernas",
+      "descricaoCurta": "Equipamento destinado ao treino de quadríceps, com execução guiada e configuração adequada para ambientes profissionais.",
+      "imagem": "./arquivos/imagens/produtos/Cadeira Extensora — ID 8.png",
+      "ativoNoSite": true,
+      "exibirPreco": false,
+      "precoPublico": null,
+      "destaques": []
+    },
+    {
+      "id": 12,
+      "codigo": null,
+      "codigoValidado": false,
+      "nome": "Cross Over Tradicional",
+      "slug": "cross-over-tradicional",
+      "categoria": "Funcional",
+      "descricaoCurta": "Equipamento de cabos versátil para diferentes exercícios de membros superiores e treino funcional.",
+      "imagem": "./arquivos/imagens/produtos/Cross Over Tradicional — ID 12.png",
+      "ativoNoSite": true,
+      "exibirPreco": false,
+      "precoPublico": null,
+      "destaques": []
+    },
+    {
+      "id": 13,
+      "codigo": null,
+      "codigoValidado": false,
+      "nome": "Elevação Pélvica 2D",
+      "slug": "elevacao-pelvica-2d",
+      "categoria": "Pernas",
+      "descricaoCurta": "Equipamento desenvolvido para exercícios de elevação pélvica, com foco no treinamento de glúteos e membros inferiores.",
+      "imagem": "./arquivos/imagens/produtos/Elevação Pélvica 2D — ID 13.png",
+      "ativoNoSite": true,
+      "exibirPreco": false,
+      "precoPublico": null,
+      "destaques": []
+    },
+    {
+      "id": 16,
+      "codigo": null,
+      "codigoValidado": false,
+      "nome": "Hack Machine",
+      "slug": "hack-machine",
+      "categoria": "Pernas",
+      "descricaoCurta": "Máquina guiada destinada ao treinamento de membros inferiores, indicada para academias e espaços de musculação.",
+      "imagem": "./arquivos/imagens/produtos/Hack Machine — ID 16.png",
+      "ativoNoSite": true,
+      "exibirPreco": false,
+      "precoPublico": null,
+      "destaques": []
+    },
+    {
+      "id": 17,
+      "codigo": null,
+      "codigoValidado": false,
+      "nome": "Leg Press 45",
+      "slug": "leg-press-45",
+      "categoria": "Pernas",
+      "descricaoCurta": "Equipamento de musculação para treinamento de membros inferiores com movimento guiado em plataforma inclinada.",
+      "imagem": "./arquivos/imagens/produtos/Leg Press 45 — ID 17.png",
+      "ativoNoSite": true,
+      "exibirPreco": false,
+      "precoPublico": null,
+      "destaqueHome": 1,
+      "destaques": []
+    },
+    {
+      "id": 18,
+      "codigo": null,
+      "codigoValidado": false,
+      "nome": "Máquina Bíceps Rosca Scott",
+      "slug": "maquina-biceps-rosca-scott",
+      "categoria": "Braços",
+      "descricaoCurta": "Equipamento específico para exercícios de bíceps com apoio para os braços e movimento direcionado.",
+      "imagem": "./arquivos/imagens/produtos/Máquina Bíceps Rosca Scott — ID 18.png",
+      "ativoNoSite": true,
+      "exibirPreco": false,
+      "precoPublico": null,
+      "destaques": []
+    },
+    {
+      "id": 23,
+      "codigo": null,
+      "codigoValidado": false,
+      "nome": "Peck Deck",
+      "slug": "peck-deck",
+      "categoria": "Peito",
+      "descricaoCurta": "Máquina destinada ao treinamento de peitoral com movimento guiado e apoio adequado para execução do exercício.",
+      "imagem": "./arquivos/imagens/produtos/Peck Deck — ID 23.png",
+      "ativoNoSite": true,
+      "exibirPreco": false,
+      "precoPublico": null,
+      "destaques": []
+    },
+    {
+      "id": 24,
+      "codigo": null,
+      "codigoValidado": false,
+      "nome": "Puxada Alta Articulada",
+      "slug": "puxada-alta-articulada",
+      "categoria": "Costas",
+      "descricaoCurta": "Equipamento articulado destinado ao treinamento da musculatura das costas por meio de movimentos de puxada.",
+      "imagem": "./arquivos/imagens/produtos/Puxada Alta Articulada — ID 24.png",
+      "ativoNoSite": true,
+      "exibirPreco": false,
+      "precoPublico": null,
+      "destaqueHome": 3,
+      "destaques": []
+    },
+    {
+      "id": 29,
+      "codigo": null,
+      "codigoValidado": false,
+      "nome": "Smith Machine",
+      "slug": "smith-machine",
+      "categoria": "Funcional",
+      "descricaoCurta": "Estrutura com barra guiada para realização de diferentes exercícios de musculação em ambientes profissionais.",
+      "imagem": "./arquivos/imagens/produtos/Smith Machine — ID 29.png",
+      "ativoNoSite": true,
+      "exibirPreco": false,
+      "precoPublico": null,
+      "destaqueHome": 2,
+      "destaques": []
+    }
+  ]
+}
+

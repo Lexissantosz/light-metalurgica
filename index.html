@@ -135,7 +135,7 @@
                 <path d="M8 3h8v4H8z" />
               </svg>
 
-              <span>10 equipamentos no catálogo</span>
+              <span id="homeCatalogCount">Carregando catálogo...</span>
             </div>
 
           </div>
@@ -156,21 +156,25 @@
 
           </div>
 
-          <div class="hero-equipment">
-            <img
-              src="./arquivos/imagens/produtos/Leg Press 45 — ID 17.png"
-              alt="Leg Press 45 da Light Metalúrgica"
-            />
-          </div>
+          <div
+            class="hero-equipment"
+            id="homeHeroImage"
+          ></div>
 
           <div class="hero-equipment-info">
 
             <div>
               <span>Equipamento em destaque</span>
-              <h2>Leg Press 45</h2>
+              <h2 id="homeHeroName">
+                Carregando equipamento...
+              </h2>
             </div>
 
-            <a href="produto.html?id=17" class="text-link">
+            <a
+              href="produtos.html"
+              class="text-link"
+              id="homeHeroLink"
+            >
               Ver detalhes
             </a>
 
@@ -428,124 +432,7 @@
 
         </div>
 
-
-        <div class="featured-grid-pro">
-
-          <!-- LEG PRESS -->
-
-          <article class="product-showcase product-showcase-main">
-
-            <a
-              href="produto.html?id=17"
-              class="product-showcase-image"
-            >
-              <span class="product-code">
-                01 / PERNAS
-              </span>
-
-              <img
-                src="./arquivos/imagens/produtos/Leg Press 45 — ID 17.png"
-                alt="Leg Press 45"
-                loading="lazy"
-              />
-            </a>
-
-            <div class="product-showcase-info">
-
-              <div>
-                <span>Pernas</span>
-                <h3>Leg Press 45</h3>
-              </div>
-
-              <a
-                href="produto.html?id=17"
-                class="text-link"
-              >
-                Ver equipamento
-              </a>
-
-            </div>
-
-          </article>
-
-
-          <!-- SMITH -->
-
-          <article class="product-showcase">
-
-            <a
-              href="produto.html?id=29"
-              class="product-showcase-image"
-            >
-              <span class="product-code">
-                02 / FUNCIONAL
-              </span>
-
-              <img
-                <img
-                  src="./arquivos/imagens/produtos/Smith Machine — ID 29.png"
-                  alt="Smith Machine"
-                  loading="lazy"
-                />
-            </a>
-
-            <div class="product-showcase-info">
-
-              <div>
-                <span>Funcional</span>
-                <h3>Smith Machine</h3>
-              </div>
-
-              <a
-                href="produto.html?id=29"
-                class="text-link"
-              >
-                Ver equipamento
-              </a>
-
-            </div>
-
-          </article>
-
-
-          <!-- PUXADA -->
-
-          <article class="product-showcase">
-
-            <a
-              href="produto.html?id=24"
-              class="product-showcase-image"
-            >
-              <span class="product-code">
-                03 / COSTAS
-              </span>
-
-              <img
-                src="./arquivos/imagens/produtos/Puxada Alta Articulada — ID 24.png"
-                alt="Puxada Alta Articulada"
-                loading="lazy"
-              />
-            </a>
-
-            <div class="product-showcase-info">
-
-              <div>
-                <span>Costas</span>
-                <h3>Puxada Alta Articulada</h3>
-              </div>
-
-              <a
-                href="produto.html?id=24"
-                class="text-link"
-              >
-                Ver equipamento
-              </a>
-
-            </div>
-
-          </article>
-
-        </div>
+        <div class="featured-grid-pro" id="homeFeaturedProducts"></div>
 
       </div>
 
@@ -742,6 +629,8 @@
 
 
   <script src="./js/script.js"></script>
+  <script src="./js/catalogo-data.js"></script>
+  <script src="./js/home.js"></script>
 
 </body>
 </html>
