@@ -139,19 +139,19 @@ def estilos(cor_primaria: HexColor, cor_fundo: HexColor) -> dict:
         ),
         "category": ParagraphStyle(
             "category", parent=base["Normal"], fontName="Helvetica-Bold",
-            fontSize=8, leading=10, textColor=cor_primaria, spaceAfter=5,
+            fontSize=8, leading=10, textColor=cor_primaria, spaceAfter=4,
         ),
         "product_title": ParagraphStyle(
             "product_title", parent=base["Heading2"], fontName="Helvetica-Bold",
-            fontSize=16, leading=18, textColor=cor_fundo, spaceAfter=7,
+            fontSize=15, leading=16.5, textColor=cor_fundo, spaceAfter=5,
         ),
         "body": ParagraphStyle(
             "body", parent=base["BodyText"], fontName="Helvetica",
-            fontSize=8.5, leading=12, textColor=HexColor("#555A61"), spaceAfter=8,
+            fontSize=8.2, leading=10.8, textColor=HexColor("#555A61"), spaceAfter=6,
         ),
         "meta": ParagraphStyle(
             "meta", parent=base["BodyText"], fontName="Helvetica",
-            fontSize=7.5, leading=10, textColor=HexColor("#6D7279"),
+            fontSize=7.3, leading=9.5, textColor=HexColor("#6D7279"),
         ),
         "index": ParagraphStyle(
             "index", parent=base["BodyText"], fontName="Helvetica-Bold",
@@ -177,9 +177,9 @@ def url_produto(produto: dict, site_url: str | None) -> str | None:
 
 def bloco_produto(produto: dict, st: dict, config: dict) -> Table:
     largura_total = A4[0] - 32 * mm
-    largura_imagem = 67 * mm
-    altura_imagem = 52 * mm
-    largura_texto = largura_total - largura_imagem - 10 * mm
+    largura_imagem = 59 * mm
+    altura_imagem = 44 * mm
+    largura_texto = largura_total - largura_imagem - 8 * mm
 
     imagem = imagem_produto(produto, largura_imagem, altura_imagem)
     itens = [
@@ -200,16 +200,16 @@ def bloco_produto(produto: dict, st: dict, config: dict) -> Table:
     site_url = os.getenv("CATALOGO_SITE_URL") or config.get("siteBaseUrl")
     link_produto = url_produto(produto, site_url)
     if link_produto:
-        qr = qr_drawing(link_produto, 20 * mm)
+        qr = qr_drawing(link_produto, 18 * mm)
         qr_table = Table(
             [[qr, Paragraph("Acesse este equipamento no catálogo online.", st["small"]) ]],
-            colWidths=[22 * mm, largura_texto - 22 * mm],
+            colWidths=[20 * mm, largura_texto - 20 * mm],
         )
         qr_table.setStyle(TableStyle([
             ("VALIGN", (0, 0), (-1, -1), "MIDDLE"),
             ("LEFTPADDING", (0, 0), (-1, -1), 0),
             ("RIGHTPADDING", (0, 0), (-1, -1), 0),
-            ("TOPPADDING", (0, 0), (-1, -1), 4),
+            ("TOPPADDING", (0, 0), (-1, -1), 3),
             ("BOTTOMPADDING", (0, 0), (-1, -1), 0),
         ]))
         itens.append(qr_table)
@@ -223,19 +223,19 @@ def bloco_produto(produto: dict, st: dict, config: dict) -> Table:
         ("BOTTOMPADDING", (0, 0), (-1, -1), 0),
     ]))
 
-    tabela = Table([[imagem, right]], colWidths=[largura_imagem, largura_texto], rowHeights=[58 * mm])
+    tabela = Table([[imagem, right]], colWidths=[largura_imagem, largura_texto], rowHeights=[50 * mm])
     tabela.setStyle(TableStyle([
         ("VALIGN", (0, 0), (-1, -1), "MIDDLE"),
         ("BACKGROUND", (0, 0), (-1, -1), colors.white),
         ("BOX", (0, 0), (-1, -1), 0.5, HexColor("#D9DCE1")),
-        ("LEFTPADDING", (0, 0), (0, 0), 4 * mm),
-        ("RIGHTPADDING", (0, 0), (0, 0), 4 * mm),
+        ("LEFTPADDING", (0, 0), (0, 0), 3 * mm),
+        ("RIGHTPADDING", (0, 0), (0, 0), 3 * mm),
         ("TOPPADDING", (0, 0), (0, 0), 3 * mm),
         ("BOTTOMPADDING", (0, 0), (0, 0), 3 * mm),
-        ("LEFTPADDING", (1, 0), (1, 0), 5 * mm),
-        ("RIGHTPADDING", (1, 0), (1, 0), 5 * mm),
-        ("TOPPADDING", (1, 0), (1, 0), 4 * mm),
-        ("BOTTOMPADDING", (1, 0), (1, 0), 4 * mm),
+        ("LEFTPADDING", (1, 0), (1, 0), 4 * mm),
+        ("RIGHTPADDING", (1, 0), (1, 0), 4 * mm),
+        ("TOPPADDING", (1, 0), (1, 0), 3 * mm),
+        ("BOTTOMPADDING", (1, 0), (1, 0), 3 * mm),
     ]))
     return tabela
 
@@ -267,7 +267,7 @@ def gerar_catalogo() -> Path:
     output = ROOT / (config.get("arquivoPdf") or "arquivos/catalogo-light-metalurgica.pdf")
     output.parent.mkdir(parents=True, exist_ok=True)
 
-    cor_primaria = HexColor(config.get("corPrimaria") or "#FF6A00")
+    cor_primaria = HexColor(config.get("corPrimaria") or "#F26A21")
     cor_fundo = HexColor(config.get("corFundo") or "#0B0D10")
     empresa = config.get("empresa") or "Light Metalúrgica"
     st = estilos(cor_primaria, cor_fundo)
@@ -374,12 +374,12 @@ def gerar_catalogo() -> Path:
     for produto in produtos:
         categoria = produto.get("categoria") or "Outros"
         bloco = bloco_produto(produto, st, config)
-        bloco_com_espaco = [bloco, Spacer(1, 6 * mm)]
+        bloco_com_espaco = [bloco, Spacer(1, 4 * mm)]
 
         if categoria != categoria_atual:
             story.append(KeepTogether([
                 Paragraph(categoria, st["section_title"]),
-                HRFlowable(width="100%", thickness=1.2, color=cor_primaria, spaceAfter=6 * mm),
+                HRFlowable(width="100%", thickness=1.2, color=cor_primaria, spaceAfter=4 * mm),
                 *bloco_com_espaco,
             ]))
             categoria_atual = categoria
