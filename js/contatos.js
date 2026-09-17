@@ -38,6 +38,12 @@
     });
   }
 
+  function definirVisibilidade(seletor, visivel) {
+    document.querySelectorAll(seletor).forEach((elemento) => {
+      elemento.hidden = !visivel;
+    });
+  }
+
   function configurarLinks(seletor, href, rotulo) {
     document.querySelectorAll(seletor).forEach((link) => {
       if (!href) {
@@ -57,19 +63,31 @@
     });
   }
 
+  function escaparHtml(valor = "") {
+    return String(valor)
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
+  }
+
   function renderizarVendedores(vendedores) {
     const container = document.querySelector("[data-contact-sellers]");
-    if (!container) return;
+    if (!container) return false;
 
-    if (!Array.isArray(vendedores) || vendedores.length === 0) {
+    const validos = Array.isArray(vendedores)
+      ? vendedores.filter((vendedor) => vendedor?.nome && vendedor?.whatsapp)
+      : [];
+
+    if (validos.length === 0) {
       container.hidden = true;
       container.innerHTML = "";
-      return;
+      return false;
     }
 
     container.hidden = false;
-    container.innerHTML = vendedores
-      .filter((vendedor) => vendedor?.nome && vendedor?.whatsapp)
+    container.innerHTML = validos
       .map((vendedor) => {
         const link = urlWhatsApp(
           vendedor.whatsapp,
@@ -79,7 +97,7 @@
         return `
           <article class="contact-card contact-seller-card">
             <small>Atendimento comercial</small>
-            <strong>${String(vendedor.nome).replaceAll("<", "&lt;").replaceAll(">", "&gt;")}</strong>
+            <strong>${escaparHtml(vendedor.nome)}</strong>
             <a href="${link}" target="_blank" rel="noopener noreferrer">
               Chamar no WhatsApp
             </a>
@@ -87,10 +105,13 @@
         `;
       })
       .join("");
+
+    return true;
   }
 
   function aplicar(config) {
     const whatsapp = config.whatsappPrincipal || config.vendedores?.[0]?.whatsapp || null;
+    const telefoneOuWhatsapp = config.telefone || whatsapp;
     const whatsappUrl = urlWhatsApp(whatsapp);
     const instagramUrl = urlInstagram(config.instagram);
     const instagramTexto = textoInstagram(config.instagram);
@@ -105,11 +126,17 @@
       vendedores: Array.isArray(config.vendedores) ? config.vendedores : []
     };
 
-    definirTexto("[data-contact-whatsapp-text]", config.telefone || whatsapp);
+    definirTexto("[data-contact-whatsapp-text]", telefoneOuWhatsapp);
     definirTexto("[data-contact-instagram-text]", instagramTexto);
     definirTexto("[data-contact-email-text]", config.email);
     definirTexto("[data-contact-location-text]", config.localidadePublica);
     definirTexto("[data-contact-address-text]", config.enderecoPublico);
+
+    definirVisibilidade("[data-contact-whatsapp-card]", Boolean(telefoneOuWhatsapp));
+    definirVisibilidade("[data-contact-instagram-card]", Boolean(instagramTexto));
+    definirVisibilidade("[data-contact-email-card]", Boolean(config.email));
+    definirVisibilidade("[data-contact-location-card]", Boolean(config.localidadePublica));
+    definirVisibilidade("[data-contact-address-card]", Boolean(config.enderecoPublico));
 
     configurarLinks("[data-contact-whatsapp-link]", whatsappUrl);
     configurarLinks("[data-contact-instagram-link]", instagramUrl);
@@ -118,8 +145,17 @@
       config.email ? `mailto:${config.email}` : null
     );
 
-    renderizarVendedores(config.vendedores);
-    document.dispatchEvent(new CustomEvent("light:contact-ready", { detail: window.LIGHT_CONTACT }));
+    const temVendedores = renderizarVendedores(config.vendedores);
+    const temCanalDireto = Boolean(
+      whatsappUrl || instagramUrl || config.email || temVendedores
+    );
+
+    const aviso = document.getElementById("contactPendingNotice");
+    if (aviso) aviso.hidden = temCanalDireto;
+
+    document.dispatchEvent(
+      new CustomEvent("light:contact-ready", { detail: window.LIGHT_CONTACT })
+    );
   }
 
   async function iniciar() {
