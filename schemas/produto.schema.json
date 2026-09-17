@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://light-metalurgica.local/schemas/produto.schema.json",
+  "title": "Equipamento Light Metalúrgica",
+  "type": "object",
+  "required": [
+    "id",
+    "nome",
+    "slug",
+    "categoria",
+    "descricaoCurta",
+    "ativoNoSite",
+    "exibirPreco"
+  ],
+  "properties": {
+    "id": { "type": "integer", "minimum": 1 },
+    "codigo": { "type": ["string", "null"] },
+    "codigoValidado": { "type": "boolean" },
+    "nome": { "type": "string", "minLength": 1 },
+    "nomeOriginal": { "type": "string" },
+    "slug": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+    "categoria": { "type": "string", "minLength": 1 },
+    "categoriaValidada": { "type": "boolean" },
+    "descricaoCurta": { "type": "string", "minLength": 1 },
+    "finalidade": { "type": ["string", "null"] },
+    "imagem": { "type": ["string", "null"] },
+    "ativoNoSite": { "type": "boolean" },
+    "exibirPreco": { "type": "boolean" },
+    "precoPublico": { "type": ["number", "null"], "minimum": 0 },
+    "especificacoes": {
+      "type": "object",
+      "properties": {
+        "dimensoes": { "type": ["string", "null"] },
+        "capacidade": { "type": ["string", "null"] },
+        "estrutura": { "type": ["string", "null"] },
+        "acabamento": { "type": ["string", "null"] },
+        "personalizacao": { "type": ["string", "null"] },
+        "garantia": { "type": ["string", "null"] }
+      },
+      "additionalProperties": true
+    },
+    "destaques": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["titulo", "texto"],
+        "properties": {
+          "titulo": { "type": "string", "minLength": 1 },
+          "texto": { "type": "string", "minLength": 1 }
+        },
+        "additionalProperties": false
+      }
+    },
+    "origem": { "type": "string" },
+    "ordemFonte": { "type": "integer" },
+    "paginaFonte": { "type": "integer" },
+    "codigoDuplicadoNaFonte": { "type": "boolean" },
+    "mapeamentoOficialPendente": { "type": "boolean" }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": { "exibirPreco": { "const": true } },
+        "required": ["exibirPreco"]
+      },
+      "then": {
+        "properties": {
+          "precoPublico": { "type": "number", "exclusiveMinimum": 0 }
+        },
+        "required": ["precoPublico"]
+      }
+    },
+    {
+      "if": {
+        "properties": { "ativoNoSite": { "const": true } },
+        "required": ["ativoNoSite"]
+      },
+      "then": {
+        "properties": {
+          "imagem": { "type": "string", "minLength": 1 }
+        }
+      }
+    }
+  ],
+  "additionalProperties": true
+}
