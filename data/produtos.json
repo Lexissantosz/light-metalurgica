@@ -112,6 +112,7 @@
       "ativoNoSite": true,
       "exibirPreco": false,
       "precoPublico": null,
+      "destaqueHome": 1,
       "destaques": []
     },
     {
@@ -154,6 +155,7 @@
       "ativoNoSite": true,
       "exibirPreco": false,
       "precoPublico": null,
+      "destaqueHome": 3,
       "destaques": []
     },
     {
@@ -168,6 +170,7 @@
       "ativoNoSite": true,
       "exibirPreco": false,
       "precoPublico": null,
+      "destaqueHome": 2,
       "destaques": []
     }
   ]
