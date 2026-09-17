@@ -1,0 +1,189 @@
+/* =========================================
+   LIGHT METALÚRGICA
+   LISTA DE INTERESSE
+========================================= */
+
+.interest-inline-button {
+  width: 100%;
+  min-height: 42px;
+  margin-top: 10px;
+  padding: 0 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text-muted);
+  font: inherit;
+  font-size: 0.76rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: color var(--transition), border-color var(--transition), background var(--transition);
+}
+
+.interest-inline-button:hover:not(:disabled) {
+  border-color: var(--gold);
+  color: var(--text);
+  background: rgba(255, 106, 0, 0.06);
+}
+
+.interest-inline-button:disabled {
+  cursor: default;
+  color: var(--gold-light);
+  border-color: var(--border-gold);
+  background: rgba(255, 106, 0, 0.05);
+}
+
+.product-detail-actions .interest-inline-button {
+  width: auto;
+  margin-top: 0;
+  min-height: 52px;
+  padding-inline: 20px;
+}
+
+.interest-widget {
+  position: fixed;
+  left: 24px;
+  bottom: 24px;
+  z-index: 920;
+}
+
+.interest-toggle {
+  min-height: 48px;
+  padding: 0 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: #111318;
+  color: var(--text);
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 800;
+  box-shadow: var(--shadow-lg);
+  cursor: pointer;
+}
+
+.interest-count {
+  min-width: 24px;
+  height: 24px;
+  padding-inline: 7px;
+  display: inline-grid;
+  place-items: center;
+  border-radius: 999px;
+  background: var(--gold);
+  color: var(--text-dark);
+  font-size: 0.72rem;
+}
+
+.interest-drawer {
+  position: absolute;
+  left: 0;
+  bottom: 60px;
+  width: min(380px, calc(100vw - 48px));
+  max-height: min(70vh, 560px);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: #0d0f12;
+  box-shadow: var(--shadow-lg);
+}
+
+.interest-drawer[hidden] { display: none; }
+
+.interest-drawer-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 18px 18px 14px;
+  border-bottom: 1px solid var(--border);
+}
+
+.interest-drawer-head h2 {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 1.45rem;
+  font-weight: 600;
+}
+
+.interest-close {
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text);
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.interest-items { overflow-y: auto; padding: 10px 18px; }
+.interest-empty { padding: 24px 0; color: var(--text-muted); font-size: 0.82rem; line-height: 1.6; }
+
+.interest-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 14px;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.interest-item:last-child { border-bottom: 0; }
+.interest-item strong { display: block; margin-bottom: 3px; font-size: 0.82rem; }
+.interest-item a { color: var(--text-muted); font-size: 0.72rem; }
+
+.interest-remove {
+  border: 0;
+  background: transparent;
+  color: var(--text-muted);
+  font: inherit;
+  font-size: 0.72rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+.interest-remove:hover { color: var(--gold-light); }
+
+.interest-drawer-actions {
+  display: grid;
+  gap: 8px;
+  padding: 14px 18px 18px;
+  border-top: 1px solid var(--border);
+}
+.interest-drawer-actions .btn { width: 100%; }
+
+.interest-clear {
+  min-height: 38px;
+  border: 0;
+  background: transparent;
+  color: var(--text-muted);
+  font: inherit;
+  font-size: 0.74rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+.interest-clear:hover { color: var(--text); }
+
+.interest-feedback {
+  position: absolute;
+  left: 0;
+  bottom: 58px;
+  width: max-content;
+  max-width: 320px;
+  padding: 9px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: #111318;
+  color: var(--text);
+  font-size: 0.74rem;
+  box-shadow: var(--shadow-sm);
+}
+.interest-feedback[hidden] { display: none; }
+
+@media (max-width: 640px) {
+  .interest-widget { left: 14px; bottom: 14px; }
+  .interest-drawer { width: calc(100vw - 28px); max-height: 68vh; }
+  .interest-toggle { min-height: 44px; }
+  .product-detail-actions .interest-inline-button { width: 100%; }
+}
