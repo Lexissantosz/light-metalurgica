@@ -8,6 +8,9 @@ const root = path.resolve(__dirname, "..");
 
 const erros = [];
 const avisos = [];
+const recursosGeradosOpcionais = new Set([
+  "arquivos/catalogo-light-metalurgica.pdf"
+]);
 
 function existe(caminho) {
   return fs.existsSync(path.join(root, caminho));
@@ -49,7 +52,11 @@ function validarReferenciasHtml() {
     while ((match = atributo.exec(conteudo))) {
       const referencia = normalizarReferencia(match[1]);
       if (!referencia) continue;
+
       if (!existe(referencia)) {
+        if (recursosGeradosOpcionais.has(referencia)) {
+          continue;
+        }
         erros.push(`${arquivo}: referência local inexistente -> ${referencia}`);
       }
     }
@@ -147,7 +154,9 @@ function validarRecursosDeCatalogo() {
   }
 
   if (!existe("arquivos/catalogo-light-metalurgica.pdf")) {
-    avisos.push("PDF final ainda não publicado em arquivos/catalogo-light-metalurgica.pdf.");
+    avisos.push(
+      "PDF final ainda não publicado em arquivos/catalogo-light-metalurgica.pdf; o gerador deve produzi-lo antes do teste manual."
+    );
   }
 }
 
