@@ -26,6 +26,24 @@ function parecePlaceholder(valor) {
   );
 }
 
+function validarWhatsApp(valor, rotulo) {
+  const numero = digitos(valor);
+  if (!numero) {
+    erros.push(`${rotulo}: número ausente.`);
+    return;
+  }
+
+  if (numero.length !== 13 || !numero.startsWith("55")) {
+    erros.push(`${rotulo}: use número brasileiro completo com +55, DDD e 9 dígitos.`);
+    return;
+  }
+
+  const celular = numero.slice(4);
+  if (celular.length !== 9 || !celular.startsWith("9")) {
+    erros.push(`${rotulo}: celular deve ter 9 dígitos e iniciar com 9.`);
+  }
+}
+
 for (const [campo, valor] of Object.entries(config)) {
   if (typeof valor === "string" && parecePlaceholder(valor)) {
     erros.push(`${campo}: contém valor de placeholder.`);
@@ -33,10 +51,7 @@ for (const [campo, valor] of Object.entries(config)) {
 }
 
 if (config.whatsappPrincipal) {
-  const numero = digitos(config.whatsappPrincipal);
-  if (numero.length < 10 || numero.length > 13) {
-    erros.push("whatsappPrincipal: quantidade de dígitos inesperada.");
-  }
+  validarWhatsApp(config.whatsappPrincipal, "whatsappPrincipal");
 } else {
   avisos.push("WhatsApp principal ainda não informado.");
 }
@@ -59,9 +74,13 @@ if (!Array.isArray(config.vendedores)) {
 } else {
   config.vendedores.forEach((vendedor, index) => {
     if (!vendedor?.nome) erros.push(`vendedores[${index}]: nome ausente.`);
-    if (!vendedor?.whatsapp) erros.push(`vendedores[${index}]: WhatsApp ausente.`);
-    if (vendedor?.whatsapp && parecePlaceholder(vendedor.whatsapp)) {
-      erros.push(`vendedores[${index}]: WhatsApp é placeholder.`);
+    if (!vendedor?.whatsapp) {
+      erros.push(`vendedores[${index}]: WhatsApp ausente.`);
+    } else {
+      if (parecePlaceholder(vendedor.whatsapp)) {
+        erros.push(`vendedores[${index}]: WhatsApp é placeholder.`);
+      }
+      validarWhatsApp(vendedor.whatsapp, `vendedores[${index}].whatsapp`);
     }
   });
 }
