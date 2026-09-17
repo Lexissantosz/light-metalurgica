@@ -18,6 +18,7 @@ function obterParametroId() {
   return Number(params.get("id"));
 }
 
+let produtos = [];
 
 function buscarProdutoPorId(id) {
   if (
@@ -178,7 +179,7 @@ function renderizarProduto(produto) {
         </h1>
 
         <p class="product-detail-description">
-          ${produto.descricao}
+          ${produto.descricaoCurta}
         </p>
 
 
@@ -397,4 +398,21 @@ function iniciarPaginaProduto() {
 }
 
 
-iniciarPaginaProduto();
+async function carregarPaginaProduto() {
+  try {
+    produtos =
+      await window.catalogoData
+        .carregarProdutosPublicos();
+
+    iniciarPaginaProduto();
+  } catch (erro) {
+    console.error(
+      "Erro ao carregar produto:",
+      erro
+    );
+
+    renderizarProdutoNaoEncontrado();
+  }
+}
+
+carregarPaginaProduto();
