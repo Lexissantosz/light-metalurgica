@@ -9,14 +9,6 @@ const importacaoPath = new URL(
 const catalogo = JSON.parse(fs.readFileSync(produtosPath, "utf8"));
 const importacao = JSON.parse(fs.readFileSync(importacaoPath, "utf8"));
 
-const produtos = catalogo.produtos ?? [];
-const oficiais = produtos.filter(
-  (produto) => produto.origem === "tabela-oficial"
-);
-const demonstrativos = produtos.filter(
-  (produto) => produto.origem === "catalogo-demonstrativo"
-);
-
 function falhar(mensagem) {
   console.error(`ERRO: ${mensagem}`);
   process.exitCode = 1;
@@ -34,28 +26,47 @@ function duplicados(valores) {
     .sort(([a], [b]) => String(a).localeCompare(String(b)));
 }
 
+function normalizarDuplicidadesFonte(itens = []) {
+  return itens
+    .map((item) => [String(item.codigo), Number(item.quantidade)])
+    .sort(([a], [b]) => a.localeCompare(b));
+}
+
+const produtos = catalogo.produtos;
+const equipamentosImportacao = importacao.equipamentos;
+
 if (!Array.isArray(produtos)) {
-  falhar("catalogo.produtos precisa ser um array.");
+  console.error("ERRO: catalogo.produtos precisa ser um array.");
+  process.exit(1);
 }
 
-if (produtos.length !== 101) {
-  falhar(`esperados 101 registros totais; encontrados ${produtos.length}.`);
+if (!Array.isArray(equipamentosImportacao)) {
+  console.error("ERRO: importacao.equipamentos precisa ser um array.");
+  process.exit(1);
 }
 
-if (oficiais.length !== 91) {
-  falhar(`esperados 91 registros oficiais; encontrados ${oficiais.length}.`);
-}
+const oficiais = produtos.filter(
+  (produto) => produto.origem === "tabela-oficial"
+);
+const demonstrativos = produtos.filter(
+  (produto) => produto.origem === "catalogo-demonstrativo"
+);
+const ativos = produtos.filter((produto) => produto.ativoNoSite === true);
 
-if (demonstrativos.length !== 10) {
+if (importacao.totalLinhasEquipamentos !== equipamentosImportacao.length) {
   falhar(
-    `esperados 10 registros demonstrativos; encontrados ${demonstrativos.length}.`
+    `o arquivo de importação declara ${importacao.totalLinhasEquipamentos} linhas, mas contém ${equipamentosImportacao.length} equipamentos.`
   );
 }
 
-const ativos = produtos.filter((produto) => produto.ativoNoSite === true);
+if (oficiais.length !== equipamentosImportacao.length) {
+  falhar(
+    `esperados ${equipamentosImportacao.length} registros oficiais; encontrados ${oficiais.length}.`
+  );
+}
 
-if (ativos.length !== 10) {
-  falhar(`esperados 10 produtos ativos; encontrados ${ativos.length}.`);
+if (produtos.length < oficiais.length) {
+  falhar("o catálogo possui menos produtos do que registros oficiais.");
 }
 
 const idsDuplicados = duplicados(produtos.map((produto) => produto.id));
@@ -70,43 +81,44 @@ if (slugsDuplicados.length > 0) {
   falhar(`slugs duplicados: ${JSON.stringify(slugsDuplicados)}.`);
 }
 
-const codigosOficiais = oficiais.map((produto) => produto.codigo);
-const codigosDistintos = new Set(codigosOficiais);
+const produtosSemIdentidade = produtos.filter(
+  (produto) =>
+    !Number.isInteger(produto.id) ||
+    typeof produto.nome !== "string" ||
+    produto.nome.trim() === "" ||
+    typeof produto.slug !== "string" ||
+    produto.slug.trim() === ""
+);
 
-if (codigosDistintos.size !== 88) {
+if (produtosSemIdentidade.length > 0) {
   falhar(
-    `esperados 88 códigos oficiais distintos; encontrados ${codigosDistintos.size}.`
+    `${produtosSemIdentidade.length} produto(s) possuem id, nome ou slug inválido(s).`
   );
 }
 
-const duplicidadesEsperadas = [
-  ["2004784708006", 2],
-  ["2048536878005", 2],
-  ["2071725904407", 2]
-];
+const ativosSemImagem = ativos.filter(
+  (produto) => typeof produto.imagem !== "string" || produto.imagem.trim() === ""
+);
 
-const duplicidadesEncontradas = duplicados(codigosOficiais);
-
-if (
-  JSON.stringify(duplicidadesEncontradas) !==
-  JSON.stringify(duplicidadesEsperadas)
-) {
+if (ativosSemImagem.length > 0) {
   falhar(
-    `duplicidades de código divergentes: ${JSON.stringify(
-      duplicidadesEncontradas
-    )}.`
+    `produtos ativos sem imagem: ${ativosSemImagem
+      .map((produto) => `${produto.id}:${produto.nome}`)
+      .join(", ")}.`
   );
 }
 
-if (importacao.totalLinhasEquipamentos !== 91) {
-  falhar(
-    `arquivo de importação declara ${importacao.totalLinhasEquipamentos} linhas em vez de 91.`
-  );
-}
+const precosPublicosInvalidos = produtos.filter(
+  (produto) =>
+    produto.exibirPreco === true &&
+    (!Number.isFinite(produto.precoPublico) || produto.precoPublico <= 0)
+);
 
-if (importacao.totalCodigosDistintos !== 88) {
+if (precosPublicosInvalidos.length > 0) {
   falhar(
-    `arquivo de importação declara ${importacao.totalCodigosDistintos} códigos distintos em vez de 88.`
+    `produtos com preço público inválido: ${precosPublicosInvalidos
+      .map((produto) => `${produto.id}:${produto.nome}`)
+      .join(", ")}.`
   );
 }
 
@@ -116,6 +128,69 @@ const contemCusto = produtos.some((produto) =>
 
 if (contemCusto) {
   falhar("data/produtos.json não pode expor o campo custo.");
+}
+
+const codigosOficiais = oficiais.map((produto) => produto.codigo);
+const codigosDistintos = new Set(codigosOficiais);
+
+if (codigosDistintos.size !== importacao.totalCodigosDistintos) {
+  falhar(
+    `esperados ${importacao.totalCodigosDistintos} códigos oficiais distintos; encontrados ${codigosDistintos.size}.`
+  );
+}
+
+const codigosOficiaisInvalidos = oficiais.filter(
+  (produto) =>
+    typeof produto.codigo !== "string" || !/^\d{13}$/.test(produto.codigo)
+);
+
+if (codigosOficiaisInvalidos.length > 0) {
+  falhar(
+    `códigos oficiais inválidos: ${codigosOficiaisInvalidos
+      .map((produto) => `${produto.id}:${produto.codigo}`)
+      .join(", ")}.`
+  );
+}
+
+const duplicidadesEsperadas = normalizarDuplicidadesFonte(
+  importacao.codigosDuplicados
+);
+const duplicidadesEncontradas = duplicados(codigosOficiais);
+
+if (
+  JSON.stringify(duplicidadesEncontradas) !==
+  JSON.stringify(duplicidadesEsperadas)
+) {
+  falhar(
+    `duplicidades de código divergentes: ${JSON.stringify(
+      duplicidadesEncontradas
+    )}. Esperado: ${JSON.stringify(duplicidadesEsperadas)}.`
+  );
+}
+
+const oficiaisPorOrdem = new Map(
+  oficiais.map((produto) => [produto.ordemFonte, produto])
+);
+
+for (const itemFonte of equipamentosImportacao) {
+  const produto = oficiaisPorOrdem.get(itemFonte.ordemFonte);
+
+  if (!produto) {
+    falhar(`registro oficial ausente para ordemFonte ${itemFonte.ordemFonte}.`);
+    continue;
+  }
+
+  if (produto.codigo !== itemFonte.codigo) {
+    falhar(
+      `código divergente na ordem ${itemFonte.ordemFonte}: ${produto.codigo} != ${itemFonte.codigo}.`
+    );
+  }
+
+  if (produto.nomeOriginal !== itemFonte.nomeOriginal) {
+    falhar(
+      `nome original divergente na ordem ${itemFonte.ordemFonte}: ${produto.nomeOriginal} != ${itemFonte.nomeOriginal}.`
+    );
+  }
 }
 
 if (!process.exitCode) {
