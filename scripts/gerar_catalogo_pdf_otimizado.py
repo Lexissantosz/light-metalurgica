@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+import os
 from pathlib import Path
 
 from PIL import Image as PilImage
@@ -10,6 +11,7 @@ import gerar_catalogo_pdf as gerador
 
 ROOT = Path(__file__).resolve().parents[1]
 ORIGINAL_DATA = ROOT / "data" / "produtos.json"
+CONTACT_DATA = ROOT / "data" / "contato.json"
 BUILD_DIR = ROOT / ".catalogo-build"
 IMAGES_DIR = BUILD_DIR / "imagens"
 OPTIMIZED_DATA = BUILD_DIR / "produtos-otimizado.json"
@@ -46,6 +48,35 @@ def otimizar_imagem(origem: Path, destino: Path) -> bool:
     except Exception as exc:
         print(f"Aviso: não foi possível otimizar {origem}: {exc}")
         return False
+
+
+def aplicar_contatos_centrais() -> None:
+    if not CONTACT_DATA.exists():
+        return
+
+    try:
+        contato = json.loads(CONTACT_DATA.read_text(encoding="utf-8"))
+    except Exception as exc:
+        print(f"Aviso: data/contato.json não pôde ser lido: {exc}")
+        return
+
+    vendedores = contato.get("vendedores") if isinstance(contato.get("vendedores"), list) else []
+    whatsapp = contato.get("whatsappPrincipal")
+    if not whatsapp:
+        whatsapp = next(
+            (v.get("whatsapp") for v in vendedores if isinstance(v, dict) and v.get("whatsapp")),
+            None,
+        )
+
+    valores = {
+        "CATALOGO_WHATSAPP": whatsapp,
+        "CATALOGO_INSTAGRAM": contato.get("instagram"),
+        "CATALOGO_EMAIL": contato.get("email"),
+    }
+
+    for chave, valor in valores.items():
+        if valor and not os.getenv(chave):
+            os.environ[chave] = str(valor)
 
 
 def preparar_dados() -> Path:
@@ -96,6 +127,7 @@ def preparar_dados() -> Path:
 
 
 def main() -> None:
+    aplicar_contatos_centrais()
     dados_otimizados = preparar_dados()
     gerador.DATA_PATH = dados_otimizados
     output = gerador.gerar_catalogo()
