@@ -27,8 +27,21 @@ function carregarCamadaAcessibilidadePerformance() {
   }
 }
 
+function carregarCamadaResponsiva() {
+  if (document.getElementById("light-responsive-css")) {
+    return;
+  }
+
+  const responsiveCss = document.createElement("link");
+  responsiveCss.id = "light-responsive-css";
+  responsiveCss.rel = "stylesheet";
+  responsiveCss.href = "./css/responsive-final.css";
+  document.head.appendChild(responsiveCss);
+}
+
 carregarIdentidadeVisual();
 carregarCamadaAcessibilidadePerformance();
+carregarCamadaResponsiva();
 
 const header = document.getElementById("header");
 const menuToggle = document.getElementById("menuToggle");
