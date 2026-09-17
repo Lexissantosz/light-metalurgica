@@ -12,7 +12,12 @@
   }
 
   function salvarLista(lista) {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(lista));
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(lista));
+    } catch (erro) {
+      console.warn("Não foi possível salvar a lista de interesse:", erro);
+    }
+
     renderizarWidget();
     atualizarBotoesInline();
   }
@@ -57,11 +62,9 @@
       .replaceAll("'", "&#039;");
   }
 
-  function obterIdDoLink(link) {
-    if (!link) return null;
-
+  function obterIdDaUrl(urlValor) {
     try {
-      const url = new URL(link.href, window.location.href);
+      const url = new URL(urlValor, window.location.href);
       const id = Number(url.searchParams.get("id"));
       return Number.isInteger(id) && id > 0 ? id : null;
     } catch {
@@ -69,9 +72,18 @@
     }
   }
 
+  function obterIdDoLink(link) {
+    return link ? obterIdDaUrl(link.href) : null;
+  }
+
   function extrairItem(container) {
     const link = container.querySelector('a[href*="produto.html?id="]');
-    const id = obterIdDoLink(link);
+    let id = obterIdDoLink(link);
+
+    if (!id && container.matches(".product-detail-info")) {
+      id = obterIdDaUrl(window.location.href);
+    }
+
     if (!id) return null;
 
     const nomeEl =
@@ -126,10 +138,20 @@
     document.querySelectorAll(".interest-inline-button").forEach((botao) => {
       const id = Number(botao.dataset.interestId);
       const adicionado = ids.has(id);
+      const texto = adicionado ? "Na lista ✓" : "Adicionar à lista de interesse";
+      const ariaPressed = String(adicionado);
 
-      botao.disabled = adicionado;
-      botao.textContent = adicionado ? "Na lista ✓" : "Adicionar à lista de interesse";
-      botao.setAttribute("aria-pressed", String(adicionado));
+      if (botao.disabled !== adicionado) {
+        botao.disabled = adicionado;
+      }
+
+      if (botao.textContent !== texto) {
+        botao.textContent = texto;
+      }
+
+      if (botao.getAttribute("aria-pressed") !== ariaPressed) {
+        botao.setAttribute("aria-pressed", ariaPressed);
+      }
     });
   }
 
@@ -264,10 +286,12 @@
     const request = document.getElementById("interestRequest");
     const clear = document.getElementById("interestClear");
 
-    if (count) count.textContent = String(lista.length);
+    if (count && count.textContent !== String(lista.length)) {
+      count.textContent = String(lista.length);
+    }
 
     if (items) {
-      items.innerHTML = lista.length
+      const html = lista.length
         ? lista
             .map(
               (item) => `
@@ -293,6 +317,10 @@
               Sua lista está vazia. Adicione equipamentos do catálogo para solicitar vários modelos de uma vez.
             </p>
           `;
+
+      if (items.innerHTML !== html) {
+        items.innerHTML = html;
+      }
     }
 
     if (request) {
@@ -339,8 +367,16 @@
   }
 
   function observarConteudoDinamico() {
+    let agendado = false;
+
     const observer = new MutationObserver(() => {
-      adicionarBotoesInline();
+      if (agendado) return;
+      agendado = true;
+
+      requestAnimationFrame(() => {
+        adicionarBotoesInline();
+        agendado = false;
+      });
     });
 
     observer.observe(document.body, {
