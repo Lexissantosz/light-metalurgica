@@ -4,6 +4,12 @@ const searchInput = document.getElementById("searchInput");
 const resultsInfo = document.getElementById("resultsInfo");
 const emptyState = document.getElementById("emptyState");
 
+const catalogTotalProducts =
+  document.getElementById("catalogTotalProducts");
+
+const catalogTotalCategories =
+  document.getElementById("catalogTotalCategories");
+
 let produtos = [];
 let categoriaAtual = "Todos";
 let termoBusca = "";
@@ -19,6 +25,25 @@ function obterCategorias() {
   const categorias = produtos.map((produto) => produto.categoria);
 
   return ["Todos", ...new Set(categorias)];
+}
+
+function atualizarEstatisticasCatalogo() {
+  if (catalogTotalProducts) {
+    catalogTotalProducts.textContent =
+      String(produtos.length).padStart(2, "0");
+  }
+
+  if (catalogTotalCategories) {
+    const totalCategorias =
+      new Set(
+        produtos.map(
+          (produto) => produto.categoria
+        )
+      ).size;
+
+    catalogTotalCategories.textContent =
+      String(totalCategorias).padStart(2, "0");
+  }
 }
 
 function criarFiltros() {
@@ -212,6 +237,7 @@ async function iniciarCatalogo() {
       await window.catalogoData
         .carregarProdutosPublicos();
 
+    atualizarEstatisticasCatalogo();
     criarFiltros();
     renderizarProdutos();
   } catch (erro) {
