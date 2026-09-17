@@ -30,13 +30,7 @@
 
       <a href="contato.html" class="btn btn-gold header-cta">Solicitar orçamento</a>
 
-      <button
-        class="menu-toggle"
-        id="menuToggle"
-        type="button"
-        aria-label="Abrir menu"
-        aria-expanded="false"
-      >
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Abrir menu" aria-expanded="false">
         <span></span>
         <span></span>
         <span></span>
@@ -60,52 +54,48 @@
       <div class="container contact-grid">
         <div class="contact-info-box">
           <span class="section-badge">Contato direto</span>
-          <h2>Atendimento voltado para orçamento e suporte comercial</h2>
+          <h2>Atendimento para informações e orçamento</h2>
           <p>
-            A Light Metalúrgica atende academias, estúdios e espaços fitness
-            que buscam equipamentos com apresentação profissional e forte presença visual.
+            Escolha um dos canais comerciais confirmados ou envie sua solicitação pelo formulário.
+          </p>
+
+          <p class="contact-pending-notice" id="contactPendingNotice">
+            Os canais diretos serão exibidos aqui após o carregamento dos dados oficiais.
           </p>
 
           <div class="contact-cards">
-            <div class="contact-card">
-              <small>WhatsApp</small>
-              <strong>(61) 99999-9999</strong>
+            <div class="contact-card" data-contact-whatsapp-card hidden>
+              <small>WhatsApp principal</small>
+              <strong data-contact-whatsapp-text></strong>
             </div>
 
-            <div class="contact-card">
+            <div class="contact-card" data-contact-instagram-card hidden>
               <small>Instagram</small>
-              <strong>@lightmetalurgica</strong>
+              <strong data-contact-instagram-text></strong>
             </div>
 
-            <div class="contact-card">
-              <small>Área de atuação</small>
-              <strong>Brasília e região</strong>
+            <div class="contact-card" data-contact-email-card hidden>
+              <small>E-mail</small>
+              <strong data-contact-email-text></strong>
             </div>
 
-            <div class="contact-card">
+            <div class="contact-card" data-contact-location-card hidden>
+              <small>Localidade</small>
+              <strong data-contact-location-text></strong>
+            </div>
+
+            <div class="contact-card" data-contact-address-card hidden>
               <small>Endereço</small>
-              <strong>Samambaia, Brasília - DF</strong>
+              <strong data-contact-address-text></strong>
             </div>
           </div>
 
-          <div class="contact-info-actions">
-            <a
-              href="https://wa.me/5561999999999?text=Olá! Gostaria de solicitar um orçamento."
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn btn-gold"
-            >
-              Chamar no WhatsApp
-            </a>
+          <div class="contact-cards" data-contact-sellers hidden></div>
 
-            <a
-              href="https://www.instagram.com/lightmetalurgica/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn btn-outline"
-            >
-              Ver Instagram
-            </a>
+          <div class="contact-info-actions">
+            <a data-contact-whatsapp-link class="btn btn-gold" hidden>Chamar no WhatsApp</a>
+            <a data-contact-instagram-link class="btn btn-outline" hidden>Ver Instagram</a>
+            <a data-contact-email-link class="btn btn-outline" hidden>Enviar e-mail</a>
           </div>
         </div>
 
@@ -119,72 +109,34 @@
             method="POST"
             class="contact-form"
           >
-            <input
-              type="hidden"
-              name="_subject"
-              value="Nova solicitação pelo site Light Metalúrgica"
-            />
+            <input type="hidden" name="_subject" value="Nova solicitação pelo site Light Metalúrgica" />
 
             <div class="form-row">
               <label for="nome">Nome</label>
-              <input
-                type="text"
-                id="nome"
-                name="nome"
-                placeholder="Seu nome"
-                autocomplete="name"
-                required
-              />
+              <input type="text" id="nome" name="nome" placeholder="Seu nome" autocomplete="name" required />
             </div>
 
             <div class="form-row">
               <label for="telefone">Telefone</label>
-              <input
-                type="text"
-                id="telefone"
-                name="telefone"
-                placeholder="Seu telefone"
-                autocomplete="tel"
-                inputmode="tel"
-              />
+              <input type="text" id="telefone" name="telefone" placeholder="Seu telefone" autocomplete="tel" inputmode="tel" />
             </div>
 
             <div class="form-row">
               <label for="email">E-mail</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="Seu e-mail"
-                autocomplete="email"
-                required
-              />
+              <input type="email" id="email" name="email" placeholder="Seu e-mail" autocomplete="email" required />
             </div>
 
             <div class="form-row">
               <label for="assunto">Assunto</label>
-              <input
-                type="text"
-                id="assunto"
-                name="assunto"
-                placeholder="Ex: orçamento, disponibilidade, produto"
-              />
+              <input type="text" id="assunto" name="assunto" placeholder="Ex: orçamento, disponibilidade, produto" />
             </div>
 
             <div class="form-row">
               <label for="mensagem">Mensagem</label>
-              <textarea
-                id="mensagem"
-                name="mensagem"
-                rows="6"
-                placeholder="Descreva o que você precisa."
-                required
-              ></textarea>
+              <textarea id="mensagem" name="mensagem" rows="6" placeholder="Descreva o que você precisa." required></textarea>
             </div>
 
-            <button type="submit" class="btn btn-gold form-submit">
-              Enviar solicitação
-            </button>
+            <button type="submit" class="btn btn-gold form-submit">Enviar solicitação</button>
           </form>
         </div>
       </div>
@@ -198,9 +150,7 @@
           <span class="logo-mark">LIGHT</span>
           <span class="logo-text">Metalúrgica</span>
         </a>
-        <p>
-          Equipamentos profissionais para academias, estúdios e espaços fitness com foco em apresentação comercial.
-        </p>
+        <p>Catálogo de equipamentos para academias, estúdios e espaços de treinamento.</p>
       </div>
 
       <div class="footer-column">
@@ -213,9 +163,10 @@
 
       <div class="footer-column">
         <h4>Contato</h4>
-        <a href="#">WhatsApp</a>
-        <a href="#">Instagram</a>
-        <a href="#">Brasília - DF</a>
+        <a data-contact-whatsapp-link hidden>WhatsApp</a>
+        <a data-contact-instagram-link hidden>Instagram</a>
+        <a data-contact-email-link hidden>E-mail</a>
+        <span data-contact-location-text hidden></span>
       </div>
     </div>
 
@@ -224,14 +175,8 @@
     </div>
   </footer>
 
-  <a
-    href="https://wa.me/5561999999999?text=Olá! Gostaria de solicitar um orçamento."
-    class="whatsapp-float"
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="Entrar em contato"
-  >
-    Contato
+  <a data-contact-whatsapp-link class="whatsapp-float" aria-label="Entrar em contato pelo WhatsApp" hidden>
+    WhatsApp
   </a>
 
   <script src="./js/script.js"></script>
