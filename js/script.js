@@ -4,9 +4,9 @@ const nav = document.getElementById("nav");
 
 window.addEventListener("scroll", () => {
   if (window.scrollY > 20) {
-    header.classList.add("scrolled");
+    header?.classList.add("scrolled");
   } else {
-    header.classList.remove("scrolled");
+    header?.classList.remove("scrolled");
   }
 });
 
@@ -23,3 +23,15 @@ if (menuToggle && nav) {
     });
   });
 }
+
+function carregarScriptGlobal(src, id) {
+  if (document.getElementById(id)) return;
+
+  const script = document.createElement("script");
+  script.src = src;
+  script.id = id;
+  script.defer = true;
+  document.body.appendChild(script);
+}
+
+carregarScriptGlobal("./js/seo.js", "light-seo-script");
