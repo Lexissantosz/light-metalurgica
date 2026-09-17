@@ -23,3 +23,24 @@ if (menuToggle && nav) {
     });
   });
 }
+
+function carregarCompartilhamentoProduto() {
+  if (!document.getElementById("productDetailContainer")) return;
+
+  if (!document.querySelector('link[data-light-share="true"]')) {
+    const link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = "./css/compartilhar-produto.css";
+    link.dataset.lightShare = "true";
+    document.head.appendChild(link);
+  }
+
+  if (!document.querySelector('script[data-light-share="true"]')) {
+    const script = document.createElement("script");
+    script.src = "./js/compartilhar-produto.js";
+    script.dataset.lightShare = "true";
+    document.body.appendChild(script);
+  }
+}
+
+carregarCompartilhamentoProduto();
