@@ -44,6 +44,6 @@ Execute:
 node scripts/validar-contatos.mjs
 ```
 
-O validador rejeita placeholders óbvios, verifica formato básico de e-mail/Instagram/telefone e informa canais ainda pendentes.
+O validador rejeita placeholders, exige WhatsApps brasileiros completos no formato internacional (`55` + DDD + celular com 9 dígitos) e verifica formato básico de e-mail e Instagram.
 
 A rodada manual final deve confirmar que os links de WhatsApp, Instagram e e-mail abrem os destinos corretos em desktop e celular.
