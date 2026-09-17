@@ -32,6 +32,14 @@ function carregarCamadaResponsiva() {
   document.head.appendChild(responsiveCss);
 }
 
+function carregarContatosOficiais() {
+  if (document.querySelector('script[data-light-contact="true"]')) return;
+  const script = document.createElement("script");
+  script.src = "./js/contatos.js";
+  script.dataset.lightContact = "true";
+  document.body.appendChild(script);
+}
+
 function carregarCompartilhamentoProduto() {
   if (!document.getElementById("productDetailContainer")) return;
   if (!document.querySelector('link[data-light-share="true"]')) {
@@ -68,6 +76,7 @@ function carregarListaInteresse() {
 carregarIdentidadeVisual();
 carregarCamadaAcessibilidadePerformance();
 carregarCamadaResponsiva();
+carregarContatosOficiais();
 carregarCompartilhamentoProduto();
 carregarListaInteresse();
 
