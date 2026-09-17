@@ -7,11 +7,28 @@ function carregarIdentidadeVisual() {
   link.rel = "stylesheet";
   link.href = "./css/brand.css";
   link.dataset.lightBrand = "true";
-
   document.head.appendChild(link);
 }
 
+function carregarCamadaAcessibilidadePerformance() {
+  if (!document.querySelector('link[data-light-a11y="true"]')) {
+    const link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = "./css/accessibility-performance.css";
+    link.dataset.lightA11y = "true";
+    document.head.appendChild(link);
+  }
+
+  if (!document.querySelector('script[data-light-a11y="true"]')) {
+    const script = document.createElement("script");
+    script.src = "./js/accessibility-performance.js";
+    script.dataset.lightA11y = "true";
+    document.body.appendChild(script);
+  }
+}
+
 carregarIdentidadeVisual();
+carregarCamadaAcessibilidadePerformance();
 
 const header = document.getElementById("header");
 const menuToggle = document.getElementById("menuToggle");
