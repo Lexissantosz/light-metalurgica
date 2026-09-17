@@ -23,3 +23,22 @@ if (menuToggle && nav) {
     });
   });
 }
+
+function carregarListaInteresse() {
+  if (!document.querySelector('link[data-light-interest="true"]')) {
+    const link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = "./css/lista-interesse.css";
+    link.dataset.lightInterest = "true";
+    document.head.appendChild(link);
+  }
+
+  if (!document.querySelector('script[data-light-interest="true"]')) {
+    const script = document.createElement("script");
+    script.src = "./js/lista-interesse.js";
+    script.dataset.lightInterest = "true";
+    document.body.appendChild(script);
+  }
+}
+
+carregarListaInteresse();
