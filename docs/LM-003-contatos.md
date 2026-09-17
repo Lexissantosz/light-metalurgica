@@ -20,9 +20,19 @@ Campos disponíveis:
 - `enderecoPublico`;
 - `vendedores` (`nome` + `whatsapp`).
 
+## Dados confirmados
+
+- WhatsApp principal: Michael Dias — +55 (61) 99689-1288
+- Vendas 1: Jhade Duarte — +55 (62) 98110-2262
+- Vendas 2: Leandro Santos — +55 (61) 98185-3332
+- Instagram: @lightfitness_equipamentos
+- E-mail: lightmetalurgica@gmail.com
+- Localidade pública: Setor Industrial de Ceilândia, Brasília - DF
+- Endereço público: Quadra 9, nº 10/12, Lote 10/12 - Setor Industrial de Ceilândia, Brasília - DF - CEP 72265-090
+
 ## Comportamento seguro
 
-Enquanto um dado não estiver confirmado, o valor permanece `null` e o canal correspondente fica oculto. O site não usa número/perfil de exemplo como fallback.
+Canais não informados permanecem `null` e ficam ocultos. O site não usa número, perfil ou endereço fictício como fallback.
 
 `js/contatos.js` também disponibiliza os dados confirmados em `window.LIGHT_CONTACT`, permitindo reutilização pela lista de interesse, PDF e outras funcionalidades depois da integração.
 
@@ -36,13 +46,4 @@ node scripts/validar-contatos.mjs
 
 O validador rejeita placeholders óbvios, verifica formato básico de e-mail/Instagram/telefone e informa canais ainda pendentes.
 
-## Informações que ainda precisam vir da empresa
-
-- WhatsApp principal ou WhatsApps dos vendedores;
-- nome dos vendedores que devem aparecer;
-- Instagram oficial;
-- e-mail comercial, caso exista;
-- telefone convencional, se houver;
-- localidade/endereço que a empresa deseja publicar.
-
-Não preencher nenhum desses campos por inferência.
+A rodada manual final deve confirmar que os links de WhatsApp, Instagram e e-mail abrem os destinos corretos em desktop e celular.
