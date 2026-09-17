@@ -1,0 +1,157 @@
+/* LM-004 — refinamentos da ficha comercial do produto */
+
+.product-detail-eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.product-detail-eyebrow .product-detail-category {
+  margin-bottom: 0;
+}
+
+.product-detail-status {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 0 10px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.product-commercial-sheet {
+  margin-bottom: 34px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.product-commercial-sheet-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 15px 18px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.018);
+}
+
+.product-commercial-sheet-head span,
+.product-commercial-sheet-head strong {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.product-commercial-sheet-head span {
+  color: var(--gold);
+}
+
+.product-commercial-sheet-head strong {
+  color: var(--text-muted);
+}
+
+.product-commercial-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.product-commercial-grid > div {
+  min-width: 0;
+  padding: 18px;
+  border-bottom: 1px solid var(--border);
+}
+
+.product-commercial-grid > div:nth-child(odd) {
+  border-right: 1px solid var(--border);
+}
+
+.product-commercial-grid > div:nth-last-child(-n + 2) {
+  border-bottom: 0;
+}
+
+.product-commercial-grid dt {
+  margin-bottom: 5px;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #6f7379;
+}
+
+.product-commercial-grid dd {
+  margin: 0;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--text);
+  overflow-wrap: anywhere;
+}
+
+.product-detail-note {
+  max-width: 610px;
+  margin-top: 18px;
+  font-size: 0.72rem;
+  line-height: 1.65;
+  color: #6f7379;
+}
+
+.related-product-placeholder {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  text-align: center;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #6f7379;
+  background: #0d0f12;
+}
+
+.product-final-cta h2 #finalCtaProductName {
+  display: block;
+  color: var(--gold);
+}
+
+@media (max-width: 640px) {
+  .product-detail-eyebrow {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .product-commercial-sheet-head {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .product-commercial-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .product-commercial-grid > div,
+  .product-commercial-grid > div:nth-child(odd),
+  .product-commercial-grid > div:nth-last-child(-n + 2) {
+    border-right: 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .product-commercial-grid > div:last-child {
+    border-bottom: 0;
+  }
+}

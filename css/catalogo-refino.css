@@ -1,0 +1,113 @@
+/* =========================================
+   LM-007 — REFINO DO CATÁLOGO
+========================================= */
+
+.catalog-card {
+  position: relative;
+  min-height: 100%;
+}
+
+.catalog-card:focus-within {
+  border-color: var(--border-gold);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.24);
+}
+
+.catalog-card-image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  height: auto;
+}
+
+.catalog-card-image img,
+.catalog-card-placeholder {
+  width: 100%;
+  height: 100%;
+}
+
+.catalog-card-placeholder {
+  min-height: 100%;
+  border: 0;
+  background:
+    radial-gradient(circle at center, rgba(255, 255, 255, 0.04), transparent 55%),
+    #0d0f12;
+  color: var(--text-muted);
+}
+
+.catalog-card-content {
+  gap: 0;
+}
+
+.catalog-card-category {
+  padding: 4px 8px;
+  border: 1px solid var(--border-gold);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.catalog-card-title a {
+  transition: color var(--transition);
+}
+
+.catalog-card-title a:hover,
+.catalog-card-title a:focus-visible {
+  color: var(--gold-light);
+}
+
+.catalog-card-description {
+  min-height: 0;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.catalog-card-actions {
+  align-items: stretch;
+}
+
+.catalog-card-actions .btn {
+  min-height: 46px;
+  white-space: normal;
+  text-align: center;
+  line-height: 1.25;
+}
+
+.filter-btn {
+  outline: none;
+}
+
+.filter-btn:focus-visible {
+  border-color: var(--gold-light);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.035);
+}
+
+.catalog-results-header {
+  min-height: 26px;
+}
+
+@media (max-width: 760px) {
+  .catalog-filter-row {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .category-filters {
+    width: 100%;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 6px;
+    scrollbar-width: thin;
+  }
+
+  .filter-btn {
+    flex: 0 0 auto;
+  }
+}
+
+@media (max-width: 520px) {
+  .catalog-card-actions {
+    grid-template-columns: 1fr;
+  }
+}

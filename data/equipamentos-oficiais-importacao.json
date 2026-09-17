@@ -1,0 +1,680 @@
+{
+  "fonte": "LIGHT FITNESS - TABELA PROFISSIONAL DE EQUIPAMENTOS",
+  "arquivoFonte": "Planilha_Profissional_Equipamentos_Light_Fitness.pdf",
+  "totalLinhasEquipamentos": 91,
+  "totalCodigosDistintos": 88,
+  "codigosDuplicados": [
+    {
+      "codigo": "2004784708006",
+      "quantidade": 2,
+      "equipamentos": [
+        "FLEXORA EM PÉ MODELO NOVO",
+        "FRONT DOWN HAMMER"
+      ]
+    },
+    {
+      "codigo": "2048536878005",
+      "quantidade": 2,
+      "equipamentos": [
+        "MÁQUINA BÚLGARO MULTIFUNCIONAL",
+        "MÁQUINA DE ANTEBRAÇO"
+      ]
+    },
+    {
+      "codigo": "2071725904407",
+      "quantidade": 2,
+      "equipamentos": [
+        "SUPINO DECLINADO SENTADO MODELO ROBÓTICO",
+        "SUPINO INCLINADO SENTADO MODELO ROBÓTICO"
+      ]
+    }
+  ],
+  "pendenciasFonte": [
+    {
+      "codigo": "2091327627801",
+      "equipamento": "SUPORTE SCOTT COM REGULAGEM",
+      "campo": "custo",
+      "observacao": "Campo sem valor preenchido na página 3 do PDF."
+    }
+  ],
+  "observacaoSeguranca": "Este arquivo de importação não contém custo interno nem valores comerciais.",
+  "equipamentos": [
+    {
+      "ordemFonte": 1,
+      "paginaFonte": 1,
+      "codigo": "2004445420506",
+      "nomeOriginal": "ABDOMINAL MÁQUINA MOD IMPORT",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 2,
+      "paginaFonte": 1,
+      "codigo": "2025835693409",
+      "nomeOriginal": "ABDUTORA EM PÉ",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 3,
+      "paginaFonte": 1,
+      "codigo": "2033065533204",
+      "nomeOriginal": "AGACHAMENTO SUMÔ BELT SQUAT",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 4,
+      "paginaFonte": 1,
+      "codigo": "2017816240207",
+      "nomeOriginal": "AGACHAMENTO HACK MACHINE",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 5,
+      "paginaFonte": 1,
+      "codigo": "2011460090003",
+      "nomeOriginal": "AGACHAMENTO PÊNDULO",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 6,
+      "paginaFonte": 1,
+      "codigo": "2077481219403",
+      "nomeOriginal": "AGACHAMENTO VSQUAT",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 7,
+      "paginaFonte": 1,
+      "codigo": "2083043064305",
+      "nomeOriginal": "ANILHA EMBORRACHADA",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 8,
+      "paginaFonte": 1,
+      "codigo": "2049338318300",
+      "nomeOriginal": "BANCO DE 0 A 90º",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 9,
+      "paginaFonte": 1,
+      "codigo": "2041184560209",
+      "nomeOriginal": "BANCO LOMBAR MOD IMPORT",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 10,
+      "paginaFonte": 1,
+      "codigo": "2084296967504",
+      "nomeOriginal": "BANCO MULTIUSO 90º",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 11,
+      "paginaFonte": 1,
+      "codigo": "2052165386206",
+      "nomeOriginal": "BANCO PANTURRILHA (BURRINHO)",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 12,
+      "paginaFonte": 1,
+      "codigo": "2024334208008",
+      "nomeOriginal": "BANCO RETO",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 13,
+      "paginaFonte": 1,
+      "codigo": "2081435598001",
+      "nomeOriginal": "BANCO SCOTT",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 14,
+      "paginaFonte": 1,
+      "codigo": "2010534263008",
+      "nomeOriginal": "BANCO SUPINO AJUSTÁVEL",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 15,
+      "paginaFonte": 1,
+      "codigo": "2007192844205",
+      "nomeOriginal": "BANCO SUPINO DECLINADO",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 16,
+      "paginaFonte": 1,
+      "codigo": "2046815565103",
+      "nomeOriginal": "BANCO SUPINO INCLINADO",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 17,
+      "paginaFonte": 1,
+      "codigo": "2079911621466",
+      "nomeOriginal": "BANCO SUPINO RETO MOD IMPORT",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 18,
+      "paginaFonte": 1,
+      "codigo": "2081212157001",
+      "nomeOriginal": "BANCO SUPORTE ELEVAÇÃO PÉLVICA",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 19,
+      "paginaFonte": 1,
+      "codigo": "2037925514204",
+      "nomeOriginal": "CADEIRA ABDUTORA",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 20,
+      "paginaFonte": 1,
+      "codigo": "2077540819162",
+      "nomeOriginal": "CADEIRA ADUTORA",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 21,
+      "paginaFonte": 1,
+      "codigo": "2046816913507",
+      "nomeOriginal": "CADEIRA ABDUTORA/ADUTORA CONJUGADA",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 22,
+      "paginaFonte": 1,
+      "codigo": "2095407060809",
+      "nomeOriginal": "CADEIRA EXTENSORA C/ EIXO CENTRAL",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 23,
+      "paginaFonte": 1,
+      "codigo": "2054891069767",
+      "nomeOriginal": "CADEIRA EXTENSORA UNILATERAL ARTICULADA",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 24,
+      "paginaFonte": 1,
+      "codigo": "2084944333002",
+      "nomeOriginal": "CADEIRA EXTENSORA/FLEXORA CONJUGADA",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 25,
+      "paginaFonte": 1,
+      "codigo": "2060260997227",
+      "nomeOriginal": "CADEIRA FLEXORA",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 26,
+      "paginaFonte": 1,
+      "codigo": "2070370064306",
+      "nomeOriginal": "CROSS OVER ANGULAR",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 27,
+      "paginaFonte": 1,
+      "codigo": "2055947673006",
+      "nomeOriginal": "CROSS OVER TRADICIONAL",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 28,
+      "paginaFonte": 1,
+      "codigo": "2073137282241",
+      "nomeOriginal": "CROSS SMITH",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 29,
+      "paginaFonte": 1,
+      "codigo": "2099542104305",
+      "nomeOriginal": "CRUCIFIXO DEITADO",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 30,
+      "paginaFonte": 1,
+      "codigo": "2050510062003",
+      "nomeOriginal": "DESENVOLVIMENTO DE OMBRO",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 31,
+      "paginaFonte": 2,
+      "codigo": "2077412299504",
+      "nomeOriginal": "DESENVOLVIMENTO DE OMBROS MILITAR",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 32,
+      "paginaFonte": 2,
+      "codigo": "2017557949605",
+      "nomeOriginal": "DESENVOLVIMENTO OMBRO MÁQUINA",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 33,
+      "paginaFonte": 2,
+      "codigo": "2078222994108",
+      "nomeOriginal": "ELEVAÇÃO LATERAL EM PÉ",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 34,
+      "paginaFonte": 2,
+      "codigo": "2037001462306",
+      "nomeOriginal": "ELEVAÇÃO LATERAL SENTADA ARTICULADA",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 35,
+      "paginaFonte": 2,
+      "codigo": "2003931603409",
+      "nomeOriginal": "ELEVAÇÃO PÉLVICA GUIADA",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 36,
+      "paginaFonte": 2,
+      "codigo": "2065599251880",
+      "nomeOriginal": "ESPALDAR INOX",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 37,
+      "paginaFonte": 2,
+      "codigo": "2019016570207",
+      "nomeOriginal": "FLEXORA EM PÉ ARTICULADA",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 38,
+      "paginaFonte": 2,
+      "codigo": "2004784708006",
+      "nomeOriginal": "FLEXORA EM PÉ MODELO NOVO",
+      "codigoDuplicadoNaFonte": true
+    },
+    {
+      "ordemFonte": 39,
+      "paginaFonte": 2,
+      "codigo": "2004784708006",
+      "nomeOriginal": "FRONT DOWN HAMMER",
+      "codigoDuplicadoNaFonte": true
+    },
+    {
+      "ordemFonte": 40,
+      "paginaFonte": 2,
+      "codigo": "2030020380200",
+      "nomeOriginal": "GAIOLA DE AGACHAMENTO",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 41,
+      "paginaFonte": 2,
+      "codigo": "2052677086601",
+      "nomeOriginal": "GRAVITON",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 42,
+      "paginaFonte": 2,
+      "codigo": "2089978914609",
+      "nomeOriginal": "HACK SENTADO GUIA LINEAR",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 43,
+      "paginaFonte": 2,
+      "codigo": "2012043123408",
+      "nomeOriginal": "LEG ARTICULADO",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 44,
+      "paginaFonte": 2,
+      "codigo": "2079321012205",
+      "nomeOriginal": "LEG PRESS 45º MOD IMPORTADO",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 45,
+      "paginaFonte": 2,
+      "codigo": "2027656353104",
+      "nomeOriginal": "LEG PRESS HORIZONTAL",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 46,
+      "paginaFonte": 2,
+      "codigo": "2077993735446",
+      "nomeOriginal": "LEG PRESS MOD NOVO",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 47,
+      "paginaFonte": 2,
+      "codigo": "2031821438206",
+      "nomeOriginal": "LOW ROW HAMMER",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 48,
+      "paginaFonte": 2,
+      "codigo": "2046765885047",
+      "nomeOriginal": "MÁQUINA ABDOMINAL ARTICULADO",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 49,
+      "paginaFonte": 2,
+      "codigo": "2048536878005",
+      "nomeOriginal": "MÁQUINA BÚLGARO MULTIFUNCIONAL",
+      "codigoDuplicadoNaFonte": true
+    },
+    {
+      "ordemFonte": 50,
+      "paginaFonte": 2,
+      "codigo": "2048536878005",
+      "nomeOriginal": "MÁQUINA DE ANTEBRAÇO",
+      "codigoDuplicadoNaFonte": true
+    },
+    {
+      "ordemFonte": 51,
+      "paginaFonte": 2,
+      "codigo": "2095300440609",
+      "nomeOriginal": "MÁQUINA DE PANTURRILHA EM PÉ",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 52,
+      "paginaFonte": 2,
+      "codigo": "2070987299207",
+      "nomeOriginal": "MÁQUINA DE TRÍCEPS FRANCÊS",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 53,
+      "paginaFonte": 2,
+      "codigo": "2056157681805",
+      "nomeOriginal": "MÁQUINA ROSCA SCOTT",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 54,
+      "paginaFonte": 2,
+      "codigo": "2001272321303",
+      "nomeOriginal": "MÁQUINA TRÍCEPS BAT 80 KG",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 55,
+      "paginaFonte": 2,
+      "codigo": "2046074294400",
+      "nomeOriginal": "MESA FLEXORA MOD IMPORTADO",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 56,
+      "paginaFonte": 2,
+      "codigo": "2061783630608",
+      "nomeOriginal": "MONO CROSS OVER",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 57,
+      "paginaFonte": 2,
+      "codigo": "2090062760569",
+      "nomeOriginal": "MULT ESTAÇÃO DE MUSCULAÇÃO BAT 80 KG",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 58,
+      "paginaFonte": 2,
+      "codigo": "2003653530403",
+      "nomeOriginal": "PARALELA",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 59,
+      "paginaFonte": 2,
+      "codigo": "2052188409364",
+      "nomeOriginal": "PECK DECK PEITORAL E DORSA",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 60,
+      "paginaFonte": 2,
+      "codigo": "2057876438701",
+      "nomeOriginal": "POLIA DE GLÚTEOS 4 APOIOS",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 61,
+      "paginaFonte": 2,
+      "codigo": "2016835907504",
+      "nomeOriginal": "PRANCHA INCLINADA P/ ABDOMINAL LIVRE",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 62,
+      "paginaFonte": 2,
+      "codigo": "2018512863004",
+      "nomeOriginal": "PULLEY PUXADA ALTA ARTICULADA",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 63,
+      "paginaFonte": 2,
+      "codigo": "2040150652504",
+      "nomeOriginal": "PULLEY PUXADA ALTA MÁQUINA",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 64,
+      "paginaFonte": 3,
+      "codigo": "2024668108104",
+      "nomeOriginal": "PUXADA ALTA ARTICULADA LIGHT",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 65,
+      "paginaFonte": 3,
+      "codigo": "2037153614868",
+      "nomeOriginal": "PUXADA ALTA ARTICULADA MOD HAMMER",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 66,
+      "paginaFonte": 3,
+      "codigo": "2086231067003",
+      "nomeOriginal": "PUXADA ALTA C/ REMADA BAIXA",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 67,
+      "paginaFonte": 3,
+      "codigo": "2074693406409",
+      "nomeOriginal": "PUXADA ALTA MOD IMPORTADO",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 68,
+      "paginaFonte": 3,
+      "codigo": "2002777707203",
+      "nomeOriginal": "PUXADA EM X ARTICULADO",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 69,
+      "paginaFonte": 3,
+      "codigo": "2008436828005",
+      "nomeOriginal": "REMADA BAIXA ARTICULADA",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 70,
+      "paginaFonte": 3,
+      "codigo": "2023470654007",
+      "nomeOriginal": "REMADA BAIXA ARTICULADA UNILATERAL",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 71,
+      "paginaFonte": 3,
+      "codigo": "2006801942509",
+      "nomeOriginal": "REMADA BAIXA MÁQUINA BAT 80 KG",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 72,
+      "paginaFonte": 3,
+      "codigo": "2095120730904",
+      "nomeOriginal": "REMADA CAVALINHO",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 73,
+      "paginaFonte": 3,
+      "codigo": "2065909819809",
+      "nomeOriginal": "REMADA CURVADA C/ GUIAS LINEARES",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 74,
+      "paginaFonte": 3,
+      "codigo": "2033093604204",
+      "nomeOriginal": "REMADA DY ROLL HAMMER",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 75,
+      "paginaFonte": 3,
+      "codigo": "2065684102103",
+      "nomeOriginal": "REMADANEWPULL",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 76,
+      "paginaFonte": 3,
+      "codigo": "2039953570207",
+      "nomeOriginal": "SMITH MACHINE MOD IMP",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 77,
+      "paginaFonte": 3,
+      "codigo": "2062298425604",
+      "nomeOriginal": "SUPINO ARTICULADO COM PUXADA ALTA UNILATERAL",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 78,
+      "paginaFonte": 3,
+      "codigo": "2080054702103",
+      "nomeOriginal": "SUPINO ARTICULADO MODELO ROBÓTICO",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 79,
+      "paginaFonte": 3,
+      "codigo": "2052970469002",
+      "nomeOriginal": "SUPINO DECLINADO HORIZONTAL",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 80,
+      "paginaFonte": 3,
+      "codigo": "2066013791005",
+      "nomeOriginal": "SUPINO DECLINADO MODELO HAMMER",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 81,
+      "paginaFonte": 3,
+      "codigo": "2046883218765",
+      "nomeOriginal": "SUPINO DECLINADO SENTADO MODELO HAMMER",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 82,
+      "paginaFonte": 3,
+      "codigo": "2071725904407",
+      "nomeOriginal": "SUPINO DECLINADO SENTADO MODELO ROBÓTICO",
+      "codigoDuplicadoNaFonte": true
+    },
+    {
+      "ordemFonte": 83,
+      "paginaFonte": 3,
+      "codigo": "2093003970201",
+      "nomeOriginal": "SUPINO INCLINADO HORIZONTAL",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 84,
+      "paginaFonte": 3,
+      "codigo": "2085306285106",
+      "nomeOriginal": "SUPINO INCLINADO SENTADO MODELO HAMMER",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 85,
+      "paginaFonte": 3,
+      "codigo": "2071725904407",
+      "nomeOriginal": "SUPINO INCLINADO SENTADO MODELO ROBÓTICO",
+      "codigoDuplicadoNaFonte": true
+    },
+    {
+      "ordemFonte": 86,
+      "paginaFonte": 3,
+      "codigo": "2059712573041",
+      "nomeOriginal": "SUPINO RETO HORIZONTAL ARTICULADO HAMMER",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 87,
+      "paginaFonte": 3,
+      "codigo": "2020292831005",
+      "nomeOriginal": "SUPINO RETO SENTADO MODELO HAMMER",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 88,
+      "paginaFonte": 3,
+      "codigo": "2019190006806",
+      "nomeOriginal": "SUPINO RETO SENTADO MODELO ROBÓTICO",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 89,
+      "paginaFonte": 3,
+      "codigo": "2064082260200",
+      "nomeOriginal": "SUPINO VERTICAL C/ BATERIA DE PESO",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 90,
+      "paginaFonte": 3,
+      "codigo": "2026970956206",
+      "nomeOriginal": "SUPORTE P/ AGACHAMENTO BÚLGARO",
+      "codigoDuplicadoNaFonte": false
+    },
+    {
+      "ordemFonte": 91,
+      "paginaFonte": 3,
+      "codigo": "2091327627801",
+      "nomeOriginal": "SUPORTE SCOTT COM REGULAGEM",
+      "codigoDuplicadoNaFonte": false
+    }
+  ]
+}

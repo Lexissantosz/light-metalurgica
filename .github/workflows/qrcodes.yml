@@ -1,0 +1,70 @@
+name: Gerar QR Codes
+
+on:
+  pull_request:
+    paths:
+      - "data/produtos.json"
+      - "config/qrcodes.json"
+      - "scripts/gerar_qrcodes.py"
+      - "requirements-qrcode.txt"
+      - ".github/workflows/qrcodes.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "data/produtos.json"
+      - "config/qrcodes.json"
+      - "scripts/gerar_qrcodes.py"
+      - "requirements-qrcode.txt"
+      - ".github/workflows/qrcodes.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  gerar-qrcodes:
+    if: ${{ vars.CATALOGO_SITE_URL != '' }}
+    runs-on: ubuntu-latest
+
+    env:
+      CATALOGO_SITE_URL: ${{ vars.CATALOGO_SITE_URL }}
+      CATALOGO_URL: ${{ vars.CATALOGO_URL }}
+
+    steps:
+      - name: Baixar repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements-qrcode.txt
+
+      - name: Instalar dependências
+        run: pip install -r requirements-qrcode.txt
+
+      - name: Gerar QR Codes
+        run: python scripts/gerar_qrcodes.py
+
+      - name: Disponibilizar QR Codes para revisão
+        uses: actions/upload-artifact@v4
+        with:
+          name: qrcodes-light-metalurgica
+          path: arquivos/qrcodes
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Publicar QR Codes atualizados na main
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main' && github.actor != 'github-actions[bot]'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add arquivos/qrcodes
+          if git diff --cached --quiet; then
+            echo "QR Codes sem alterações."
+            exit 0
+          fi
+          git commit -m "build(LM-019): atualiza QR Codes [skip ci]"
+          git push
