@@ -1,0 +1,62 @@
+/* =========================================
+   LIGHT METALÚRGICA
+   COMPARTILHAMENTO DE PRODUTO
+========================================= */
+
+.product-share-button {
+  min-height: 52px;
+  padding: 0 18px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+
+  background: transparent;
+  color: var(--text-muted);
+
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 800;
+
+  cursor: pointer;
+  transition:
+    color var(--transition),
+    border-color var(--transition),
+    background var(--transition),
+    transform var(--transition);
+}
+
+.product-share-button:hover {
+  transform: translateY(-2px);
+  border-color: var(--gold);
+  color: var(--text);
+  background: rgba(255, 106, 0, 0.05);
+}
+
+.product-share-button[data-state="success"] {
+  border-color: var(--border-gold);
+  color: var(--gold-light);
+}
+
+.product-share-feedback {
+  width: 100%;
+  margin-top: 10px;
+
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  line-height: 1.5;
+}
+
+.product-share-feedback[hidden] {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .product-share-button {
+    width: 100%;
+  }
+}
