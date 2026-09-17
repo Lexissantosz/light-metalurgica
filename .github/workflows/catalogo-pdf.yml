@@ -1,0 +1,84 @@
+name: Gerar catálogo PDF
+
+on:
+  pull_request:
+    paths:
+      - "data/produtos.json"
+      - "config/catalogo.json"
+      - "arquivos/imagens/produtos/**"
+      - "scripts/gerar_catalogo_pdf.py"
+      - "scripts/gerar_catalogo_pdf_otimizado.py"
+      - "scripts/validar_catalogo_pdf.py"
+      - "requirements-catalogo.txt"
+      - ".github/workflows/catalogo-pdf.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "data/produtos.json"
+      - "config/catalogo.json"
+      - "arquivos/imagens/produtos/**"
+      - "scripts/gerar_catalogo_pdf.py"
+      - "scripts/gerar_catalogo_pdf_otimizado.py"
+      - "scripts/validar_catalogo_pdf.py"
+      - "requirements-catalogo.txt"
+      - ".github/workflows/catalogo-pdf.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  gerar-catalogo:
+    runs-on: ubuntu-latest
+
+    env:
+      CATALOGO_SITE_URL: ${{ vars.CATALOGO_SITE_URL }}
+      CATALOGO_URL: ${{ vars.CATALOGO_URL }}
+      CATALOGO_WHATSAPP: ${{ vars.CATALOGO_WHATSAPP }}
+      CATALOGO_INSTAGRAM: ${{ vars.CATALOGO_INSTAGRAM }}
+      CATALOGO_EMAIL: ${{ vars.CATALOGO_EMAIL }}
+
+    steps:
+      - name: Baixar repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements-catalogo.txt
+
+      - name: Instalar dependências
+        run: pip install -r requirements-catalogo.txt
+
+      - name: Gerar PDF otimizado
+        run: python scripts/gerar_catalogo_pdf_otimizado.py
+
+      - name: Validar PDF
+        run: python scripts/validar_catalogo_pdf.py
+
+      - name: Mostrar tamanho final
+        run: ls -lh arquivos/catalogo-light-metalurgica.pdf
+
+      - name: Disponibilizar PDF para revisão
+        uses: actions/upload-artifact@v4
+        with:
+          name: catalogo-light-metalurgica
+          path: arquivos/catalogo-light-metalurgica.pdf
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Publicar PDF atualizado na main
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main' && github.actor != 'github-actions[bot]'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add arquivos/catalogo-light-metalurgica.pdf
+          if git diff --cached --quiet; then
+            echo "PDF sem alterações."
+            exit 0
+          fi
+          git commit -m "build(LM-017): atualiza catálogo PDF [skip ci]"
+          git push
