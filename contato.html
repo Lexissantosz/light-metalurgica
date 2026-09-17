@@ -11,11 +11,12 @@
 
   <link rel="stylesheet" href="./css/style.css" />
   <link rel="stylesheet" href="./css/contato.css" />
+  <link rel="stylesheet" href="./css/contato-feedback.css" />
 </head>
 <body>
   <header class="header" id="header">
     <div class="container header-container">
-      <a href="index.html" class="logo">
+      <a href="index.html" class="logo" aria-label="Light Metalúrgica - Início">
         <span class="logo-mark">LIGHT</span>
         <span class="logo-text">Metalúrgica</span>
       </a>
@@ -29,7 +30,13 @@
 
       <a href="contato.html" class="btn btn-gold header-cta">Solicitar orçamento</a>
 
-      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">
+      <button
+        class="menu-toggle"
+        id="menuToggle"
+        type="button"
+        aria-label="Abrir menu"
+        aria-expanded="false"
+      >
         <span></span>
         <span></span>
         <span></span>
@@ -106,25 +113,62 @@
           <span class="section-badge">Solicitação</span>
           <h2>Envie sua mensagem</h2>
 
-          <form action="https://formspree.io/f/mdawdeyb" method="POST" class="contact-form">
+          <form
+            id="contactForm"
+            action="https://formspree.io/f/mdawdeyb"
+            method="POST"
+            class="contact-form"
+          >
+            <input
+              type="hidden"
+              name="_subject"
+              value="Nova solicitação pelo site Light Metalúrgica"
+            />
+
             <div class="form-row">
               <label for="nome">Nome</label>
-              <input type="text" id="nome" name="nome" placeholder="Seu nome" required />
+              <input
+                type="text"
+                id="nome"
+                name="nome"
+                placeholder="Seu nome"
+                autocomplete="name"
+                required
+              />
             </div>
 
             <div class="form-row">
               <label for="telefone">Telefone</label>
-              <input type="text" id="telefone" name="telefone" placeholder="Seu telefone" />
+              <input
+                type="text"
+                id="telefone"
+                name="telefone"
+                placeholder="Seu telefone"
+                autocomplete="tel"
+                inputmode="tel"
+              />
             </div>
 
             <div class="form-row">
               <label for="email">E-mail</label>
-              <input type="email" id="email" name="email" placeholder="Seu e-mail" required />
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Seu e-mail"
+                autocomplete="email"
+                required
+              />
             </div>
 
             <div class="form-row">
               <label for="assunto">Assunto</label>
-              <input type="text" id="assunto" name="assunto" placeholder="Ex: orçamento, disponibilidade, produto" />
+              <input
+                type="text"
+                id="assunto"
+                name="assunto"
+                placeholder="Ex: orçamento, disponibilidade, produto"
+              />
             </div>
 
             <div class="form-row">
@@ -191,5 +235,6 @@
   </a>
 
   <script src="./js/script.js"></script>
+  <script src="./js/contato.js"></script>
 </body>
 </html>
