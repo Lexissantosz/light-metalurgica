@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="Acesse o catálogo digital da Light Metalúrgica, consulte os equipamentos disponíveis e baixe a versão em PDF quando publicada."
+  />
+  <meta name="theme-color" content="#090a0c" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:title" content="Catálogo Digital | Light Metalúrgica" />
+  <meta
+    property="og:description"
+    content="Consulte online a linha de equipamentos da Light Metalúrgica e acesse a versão em PDF."
+  />
+
+  <title>Catálogo Digital | Light Metalúrgica</title>
+
+  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="stylesheet" href="./css/catalogo-digital.css" />
+</head>
+<body>
+  <header class="header" id="header">
+    <div class="container header-container">
+      <a href="index.html" class="logo" aria-label="Light Metalúrgica - Início">
+        <span class="logo-mark">LIGHT</span>
+        <span class="logo-text">Metalúrgica</span>
+      </a>
+
+      <nav class="nav" id="nav">
+        <a href="index.html" class="nav-link">Início</a>
+        <a href="produtos.html" class="nav-link">Produtos</a>
+        <a href="catalogo.html" class="nav-link active">Catálogo digital</a>
+        <a href="sobre.html" class="nav-link">Sobre</a>
+        <a href="contato.html" class="nav-link">Contato</a>
+      </nav>
+
+      <a href="contato.html" class="btn btn-outline header-cta">Solicitar orçamento</a>
+
+      <button
+        class="menu-toggle"
+        id="menuToggle"
+        type="button"
+        aria-label="Abrir menu"
+        aria-expanded="false"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="digital-catalog-hero">
+      <div class="container digital-catalog-hero-grid">
+        <div>
+          <span class="section-badge">Catálogo digital</span>
+          <h1>
+            Equipamentos Light,
+            <span>em um endereço estável.</span>
+          </h1>
+          <p>
+            Consulte a versão online do catálogo. Quando o PDF estiver publicado,
+            ele também poderá ser baixado por esta mesma página, sem alterar o endereço
+            usado em QR Codes e materiais impressos.
+          </p>
+
+          <div class="digital-catalog-actions">
+            <a href="#catalogo-online" class="btn btn-gold">Ver catálogo online</a>
+            <a
+              href="./arquivos/catalogo-light-metalurgica.pdf"
+              class="btn btn-outline is-disabled"
+              id="catalogPdfLink"
+              aria-disabled="true"
+            >
+              PDF em preparação
+            </a>
+          </div>
+
+          <p class="digital-catalog-pdf-status" id="catalogPdfStatus" role="status" aria-live="polite">
+            Verificando disponibilidade do PDF...
+          </p>
+        </div>
+
+        <aside class="digital-catalog-summary" aria-label="Resumo do catálogo">
+          <div>
+            <span>Equipamentos públicos</span>
+            <strong id="digitalCatalogProductCount">...</strong>
+          </div>
+
+          <div>
+            <span>Categorias</span>
+            <strong id="digitalCatalogCategoryCount">...</strong>
+          </div>
+
+          <div>
+            <span>Atualização</span>
+            <strong id="digitalCatalogUpdatedAt">...</strong>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="digital-catalog-section" id="catalogo-online">
+      <div class="container">
+        <div class="digital-catalog-heading">
+          <div class="section-heading">
+            <span class="section-badge">Consulta online</span>
+            <h2>Equipamentos disponíveis no site</h2>
+            <p>
+              Esta lista usa a mesma fonte de dados do catálogo principal. Quando um
+              equipamento for ativado no site, ele também passa a aparecer aqui.
+            </p>
+          </div>
+
+          <a href="produtos.html" class="text-link">Abrir catálogo completo</a>
+        </div>
+
+        <div class="digital-catalog-grid" id="digitalCatalogGrid" aria-live="polite">
+          <p class="digital-catalog-loading">Carregando equipamentos...</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="digital-catalog-info">
+      <div class="container digital-catalog-info-grid">
+        <div>
+          <span class="section-badge">Por que esta página existe</span>
+          <h2>Um link que continua válido mesmo quando o PDF mudar.</h2>
+        </div>
+
+        <div>
+          <p>
+            O QR Code principal do catálogo deve apontar para <strong>catalogo.html</strong>.
+            Assim, novas versões do PDF podem substituir o arquivo anterior sem exigir a
+            impressão de um novo QR Code.
+          </p>
+          <a href="contato.html" class="btn btn-outline">Solicitar informações</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-brand">
+        <a href="index.html" class="logo footer-logo">
+          <span class="logo-mark">LIGHT</span>
+          <span class="logo-text">Metalúrgica</span>
+        </a>
+        <p>Equipamentos de musculação para academias, estúdios e espaços fitness.</p>
+      </div>
+
+      <div class="footer-column">
+        <h4>Navegação</h4>
+        <a href="index.html">Início</a>
+        <a href="produtos.html">Produtos</a>
+        <a href="catalogo.html">Catálogo digital</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="contato.html">Contato</a>
+      </div>
+
+      <div class="footer-column">
+        <h4>Catálogo</h4>
+        <a href="#catalogo-online">Consultar online</a>
+        <a href="contato.html">Solicitar orçamento</a>
+        <span class="footer-location">Brasília • DF</span>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Light Metalúrgica. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <a href="contato.html" class="whatsapp-float" aria-label="Solicitar orçamento">
+    Orçamento
+  </a>
+
+  <script src="./js/script.js"></script>
+  <script src="./js/catalogo-data.js"></script>
+  <script src="./js/catalogo-digital.js"></script>
+</body>
+</html>
